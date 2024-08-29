@@ -1,0 +1,14 @@
+[
+    "--bg",
+    "--button-font",
+    "--modal-bg",
+    "--modal-button-bg",
+    "--modal-button-bg-hover",
+    "--button-bg",
+    "--border-thick",
+    "--border-thin",
+    "--select-hover",
+    "--font",
+    "--font-hover",
+    "--source-code"
+]

@@ -1,0 +1,109 @@
+[
+    {
+        "headings": ["the lightbulb", "settings", "about"],
+        "links": ["PLAY", "settings", "about", "support us", "suggestions", "saved", "hidden themes", "page not found!"],
+        "source": "source code",
+        "confirm": ["are you sure you want to reset the counter?", "yes", "no"],
+        "text": ["sad :(", "happy!"],
+        "controls": ["switch", "reset"],
+        "back": "back",
+        "settings": ["theme", "language"],
+        "mode": ["system", "light", "dark", "custom", "more..."],
+        "customTheme": ["fill color:", "stroke color:"],
+        "current": "current",
+        "generateRandom": "generate a random theme",
+        "sample": "this is a sample of your theme",
+        "themeControls": ["apply", "cancel", "save"],
+        "savedStatus": ["this theme is already saved!", "theme saved successfully!"],
+        "savedThemes": ["saved themes", "in the collection"],
+        "themeCard": ["theme", "rename theme", "apply theme", "delete theme"],
+        "savedDialogs": ["enter theme name...", "delete theme permanently?"],
+        "noThemes": "your themes will be listed here!",
+        "saved": "saved themes",
+        "optionDescriptions": [
+            "a place for any theme that you came up with or generated in the constructor"
+        ],
+        "about": [
+            "shinebulb is a fun little project by nurgali ernist and andrew aldor.",
+            "matthew 5:14-16",
+            "you are the light of the world. a town built on a hill cannot be hidden.",
+            "neither do people light a lamp and put it under a bowl.",
+            "instead they put it on its stand, and it gives light to everyone in the house.",
+            "in the same way, let your light shine before others,",
+            "that they may see your good deeds and glorify your Father in heaven."
+        ],
+        "contact": "contact us",
+        "donate": "donate crypto with NOWPayments!",
+        "pageNotFound": ["page you were looking for was not found!", "check your current url spelling or follow one of these routes:"],
+        "home": "home",
+        "auth": ["log in", "sign up", "log out"],
+        "signup": ["welcome to shinebulb!", "username", "think of a username!", "password", "create a strong password!"],
+        "login": ["log in to shinebulb!", "enter username...", "enter password..."],
+        "logInToView": "to save themes, have synchronized settings and bulb count across multiple devices, log in or create an account! it's free and requires no personal information!",
+        "authErrors": ["username length must be between 3 and 15 characters!", "username is a required field!", "password length must be between 4 and 20 characters!", "password is a required field!", "you are already logged in!", "you already have an account and are logged in!"],
+        "joined": "joined",
+        "error": "error",
+        "authNotifications": [
+            "unexpected error occurred!",
+            "wrong username or password!"
+        ],
+        "logInWarning": [
+            "warning! make sure to carefully check your username and password before logging in. inputting an incorrect combination may cause unexpected errors!",
+            "hide", "don't show again"
+        ]
+    },
+
+    {
+        "headings": ["лампочка", "настройки", "о нас"],
+        "links": ["ИГРАТЬ", "настройки", "о нас", "поддержать", "предложения", "сохранённые", "скрытые темы", "страница не найдена!"],
+        "source": "исходный код",
+        "confirm": ["вы уверены, что хотите очистить счётчик?", "да", "нет"],
+        "text": ["грустная :(", "счастливая!"],
+        "controls": ["щёлкнуть", "очистить"],
+        "back": "назад",
+        "settings": ["тема", "язык"],
+        "mode": ["система", "светлая", "тёмная", "своя", "больше..."],
+        "customTheme": ["цвет фона:", "цвет линий:"],
+        "current": "выбран",
+        "generateRandom": "сгенерировать случайную",
+        "sample": "так будет выглядеть ваша тема",
+        "themeControls": ["применить", "отменить", "сохранить"],
+        "savedStatus": ["эта тема уже сохранена!", "тема успешно сохранена!"],
+        "savedThemes": ["сохранённые темы", "в коллекции"],
+        "themeCard": ["тема", "переименовать тему", "применить тему", "удалить тему"],
+        "savedDialogs": ["название темы...", "безвозвратно удалить тему?"],
+        "noThemes": "ваши темы будут размещены здесь!",
+        "saved": "сохранённые темы",
+        "optionDescriptions": [
+            "место для всех тем, которые вы придумали или сгенерировали в конструкторе"
+        ],
+        "about": [
+            "shinebulb — небольшой проект нургали эрниста и андрея альдора.",
+            "от матфея 5:14-16",
+            "вы — свет мира. вы подобны городу, построенному на вершине холма, который нельзя скрыть.",
+            "никто не прячет зажжённый светильник под перевёрнутый кверху дном сосуд.",
+            "напротив, светильник ставят на подставку, и он даёт свет всем в доме.",
+            "пусть ваш свет сияет перед людьми, чтобы были видны ваши добрые дела",
+            "и чтобы люди прославляли вашего Небесного Отца."
+        ],
+        "contact": "связаться с нами",
+        "donate": "пожертвуйте крипто с NOWPayments!",
+        "pageNotFound": ["страницы, которую вы ищете, не существует!", "проверьте правильность написания текущего адреса или перейдите по одному из следующих:"],
+        "home": "главная",
+        "auth": ["войти", "регистрация", "выйти"],
+        "signup": ["создайте аккаунт на shinebulb!", "имя пользователя", "назовите свой аккаунт!", "пароль", "придумайте надёжный пароль!"],
+        "login": ["войдите на shinebulb!", "ваше имя пользователя...", "ваш пароль..."],
+        "logInToView": "войдите или создайте аккаунт, чтобы сохранять темы, иметь синхронизированные настройки и счёт лампочки на нескольких устройствах! это бесплатно и не требует вашей личной информации!",
+        "authErrors": ["длина имени пользователя — от 3 до 15 символов!", "имя пользователя — обязательное поле!", "длина пароля — от 4 до 20 символов!", "пароль — обязательное поле!", "вы уже вошли в аккаунт!", "у вас уже есть аккаунт и вы вошли в него!"],
+        "joined": "дата регистрации:",
+        "error": "ошибка",
+        "authNotifications": [
+            "произошла неожиданная ошибка!",
+            "неверное имя пользователя или пароль!"
+        ],
+        "logInWarning": [
+            "предупреждение! внимательно проверьте имя пользователя и пароль перед входом в аккаунт. введение неверной комбинации может привести к неожиданным ошибкам!",
+            "скрыть", "больше не показывать"
+        ]
+    }
+]

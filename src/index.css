@@ -1,0 +1,1045 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
+
+:root {
+    --light-red: hsl(0, 97%, 80%);
+    --intermediate-red: hsl(0, 100%, 40%);
+    --dark-red: hsl(0, 100%, 15%);
+    --light-green: hsl(131, 97%, 80%);
+    --intermediate-green: hsl(110, 100%, 40%);
+    --dark-green: hsl(125, 100%, 15%);
+    --light-yellow: hsl(64, 100%, 80%);
+    --dark-yellow: hsl(33, 100%, 30%);
+    --navbar-margin: 1.2rem;
+}
+
+.light {
+    --bg: rgb(244, 240, 232);
+    --button-font: rgb(43, 43, 43);
+    --modal-bg: rgb(249, 249, 249);
+    --modal-button-bg: rgb(234, 234, 234);
+    --modal-button-bg-hover: rgb(219, 219, 219);
+    --button-bg: rgb(220, 220, 220);
+    --border-thick: rgb(43, 43, 43) 3px solid;
+    --border-thin: rgb(43, 43, 43) 1px solid;
+    --select-hover: rgb(205, 205, 205);
+    --font: rgb(35, 35, 35);
+    --font-hover: rgb(70, 70, 70);
+    --source-code: rgb(90, 90, 90);
+}
+
+
+.dark {
+    --bg: rgb(23, 23, 23);
+    --button-font: rgb(220, 220, 220);
+    --modal-bg: rgb(39, 39, 39);
+    --modal-button-bg: rgb(54, 54, 54);
+    --modal-button-bg-hover: rgb(69, 69, 69);
+    --button-bg: rgb(43, 43, 43);
+    --border-thick: rgb(220, 220, 220) 3px solid;
+    --border-thin: rgb(220, 220, 220) 1px solid;
+    --select-hover: rgb(53, 53, 53);
+    --font: rgb(220, 220, 220);
+    --font-hover: rgb(200, 200, 200);
+    --source-code: rgb(160, 160, 160);
+}
+
+html, body {
+    font-family: "Roboto Slab";
+    min-height: 100vh;
+}
+  
+body {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+}
+
+.theme-transition {
+    transition: all 0.5s ease;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: var(--modal-bg);
+}
+
+.navbar-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0.5rem auto;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    margin: auto;
+}
+
+.signup-form, .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 35ch;
+    margin: 0 auto;
+    color: var(--font);
+}
+
+.signup-form label, .login-form label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: left;
+    margin: 1.7rem 0 0.7rem 0.5rem;
+}
+
+.signup-form span {
+    color: hsl(0, 100%, 68%);
+    text-align: left;
+    font-style: italic;
+    margin-left: 0.5rem;
+}
+
+.signup-input, .login-form input {
+    font-family: "Roboto Slab";
+    background-color: var(--modal-bg);
+    color: var(--font);
+    border: var(--border-thick);
+    font-size: 1.2rem;
+    width: 30ch;
+    padding: 0.3rem 0.5rem;
+    border-radius: 15px;
+    margin-bottom: 0.3rem;
+}
+
+.signup-form button, .login-form button {
+    font-family: "Roboto Slab";
+    background-color: var(--button-bg);
+    color: var(--font);
+    border: var(--border-thick);
+    font-size: 1.3rem;
+    border-radius: 20px;
+    margin: 2.2rem auto 0;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+.login-form div, .signup-form div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.7rem 0 0.7rem 0.5rem;
+}
+
+.login-form svg, .signup-form svg {
+    height: 2rem;
+    margin-right: -1.5rem;
+    transition: fill 0.3s ease;
+    cursor: pointer;
+}
+
+.login-warning {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+    align-items: center;
+    border-radius: 25px;
+    margin: 1rem auto 0;
+    padding: 1rem;
+}
+
+.login-warning p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 1rem 0.5rem;
+}
+
+.login-warning div {
+    width: 100%;
+}
+
+.login-warning button {
+    font-family: "Roboto Slab";
+    width: 48%;
+    height: 2.7rem;
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+    font-size: 1.1rem;
+    border: var(--dark-yellow) 3px solid;
+    border-radius: 15px;
+    margin: 1%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.login-warning button:hover {
+    background-color: var(--dark-yellow);
+    color: var(--light-yellow);
+}
+
+.log-in-to-view {
+    width: 420px;
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+    border: var(--dark-yellow) 3px solid;
+    border-radius: 30px;
+    padding: 2rem;
+}
+
+.log-in-to-view p {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin: 0 0 2rem;
+}
+
+.log-in-to-view button {
+    font-family: "Roboto Slab";
+    font-size: 1.4rem;
+    width: 48%;
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+    border: var(--dark-yellow) 3px solid;
+    border-radius: 15px;
+    padding: 0.5rem 0;
+    margin: auto 1%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.log-in-to-view button:hover {
+    background-color: var(--dark-yellow);
+    color: var(--light-yellow);
+}
+
+.profile {
+    width: 90vw;
+    margin: auto;
+}
+
+.play label {
+    cursor: pointer;
+}
+
+.controls button {
+    font-family: "Roboto Slab";
+    background-color: var(--button-bg);
+    color: var(--button-font);
+    border: var(--border-thick);
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0.3rem;
+    padding: 0.3rem 1.5rem;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+.play {
+    display: flex;
+    flex-direction: column;
+}
+  
+.play img {
+    transition: transform 0.1s ease-in-out;
+    transform: rotate(-5deg);
+    width: 256px;
+    height: 256px;
+}
+  
+.play img.on {
+    transform: rotate(5deg);
+}
+
+#counter {
+    margin: 1.2rem 0;
+}
+  
+h2 {
+    font-size: 1.5rem;
+    color: var(--font);
+    font-weight: bold;
+    margin: 1rem;
+    transition: background-color 0.1s ease;
+}
+
+.settings h2 {
+    font-size: 2.4rem;
+    margin: 0 0 5rem;
+}
+
+.container {
+    font-family: "Roboto Slab";
+    width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container label {
+    font-size: 1.5rem;
+    color: var(--font);
+    transition: background-color 0.1s ease;
+}
+
+.container select {
+    background-color: var(--button-bg);
+    font-size: 1.5rem;
+    color: var(--button-font);
+    border: var(--border-thick);
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: background-color 0.1s ease;
+    cursor: pointer;
+}
+
+.signup-form button:hover,
+.login-form button:hover,
+.container select:hover,
+.controls button:hover {
+    background-color: var(--select-hover);
+}
+
+.header {
+    display: inline-flex;
+}
+
+.header img {
+    height: 7.4rem;
+    margin-left: -1.1rem;
+    margin-right: -0.7rem;
+    margin-top: 2.2rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    margin: 0.5rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--font);
+    font-weight: bold;
+    transition: background-color 0.1s ease;
+    cursor: pointer;
+}
+  
+a:hover {
+    color: var(--font-hover);
+    text-decoration: underline;
+}
+  
+.p1, .p2 {
+    color: var(--font);
+    font-weight: bold;
+    text-align: center;
+}
+
+.p1 {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.p2 {
+    font-size: 3rem;
+}
+
+.p3 {
+    color: var(--font);
+    font-size: 1.5rem;
+}
+
+.confirm {
+    width: 420px;
+    background-color: var(--modal-bg);
+    border: var(--border-thick);
+    color: var(--font);
+    border-radius: 15px;
+    padding: 1.2rem;
+}
+
+.confirm::backdrop {
+    background-color: hsl(0, 0%, 0%, 0.25);
+}
+
+.saved-controls .confirm {
+    width: 380px;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.confirm p {
+    font-size: 1.5rem;
+    margin: 10px 6px 20px;
+}
+
+.saved-controls .confirm p {
+    font-size: 1.5rem;
+    margin: 8px auto 10px;
+}
+
+.confirm input {
+    font-family: "Roboto Slab";
+    background-color: var(--modal-button-bg);
+    color: var(--button-font);
+    width: 90%;
+    font-size: 1.4rem;
+    margin: 10px auto;
+    border: var(--border-thick);
+    border-radius: 12px;
+    padding: 0.4rem;
+}
+
+::placeholder {
+    color: var(--font-hover);
+    opacity: 1; /* Firefox */
+    font-style: italic;
+}
+
+::-ms-input-placeholder {
+    color: var(--font-hover); /* Edge 12 -18 */
+    font-style: italic;
+}
+
+.confirm button {
+    font-family: "Roboto Slab";
+    background-color: var(--button-bg);
+    color: var(--button-font);
+    font-size: 1.4rem;
+    width: 6rem;
+    margin: 10px 6px;
+    border: var(--border-thick);
+    border-radius: 12px;
+    padding: 3px 0;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+.saved-controls .confirm button {
+    font-size: 1.4rem;
+    width: 45%;
+    margin: 6px;
+}
+
+.confirm button:hover,
+.confirm button:hover,
+.options button:hover,
+.modal-options:hover {
+    background-color: var(--modal-button-bg-hover);
+}
+
+.theme, .more {
+    width: 420px;
+    padding: 0;
+    background-color: var(--modal-bg);
+    border: var(--border-thick);
+    border-radius: 15px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.options div {
+    display: flex;
+    flex-direction: column;
+    color: var(--font);
+    margin: 0;
+    padding: 0.7rem 1.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.options div:hover {
+    text-decoration: none;
+    background-color: var(--modal-button-bg);
+}
+
+.options p {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+
+.options span {
+    font-size: 1.1rem;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0.5rem 0;
+}
+
+.options button {
+    font-family: "Roboto Slab";
+    background-color: transparent;
+    width: 100%;
+    height: 2.5rem;
+    color: var(--button-font);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.options svg {
+    stroke: var(--button-font);
+    margin-right: 0.6rem;
+}
+
+#saved-icon {
+    height: 2rem;
+}
+
+#explore-icon {
+    height: 2.5rem;
+}
+
+.theme::backdrop {
+    background-color: hsl(0, 0%, 0%, 0.25);
+}
+
+.theme input {
+    width: 10rem;
+    height: 4rem;
+}
+
+.themeHeader div {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    margin: 14px;
+}
+
+.themeHeader label {
+    font-size: 1.4rem;
+    color: var(--font);
+}
+
+.themeHeader span {
+    font-size: 1.1rem;
+}
+
+.sample {
+    padding: 24px 0 0;
+}
+
+.sample p {
+    font-size: 1.8rem;
+    margin: 0 20px 24px;
+}
+
+.sample button {
+    font-family: "Roboto Slab";
+    width: 25%;
+    height: 3rem;
+    color: var(--button-font);
+    background-color: var(--modal-button-bg);
+    padding: 6px 16px;
+    margin: 0px 8px 22px;
+    border: var(--border-thick);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.sample svg {
+    width: 1.8rem;
+}
+
+.modal-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-style: italic;
+    font-family: "Roboto Slab";
+    font-size: 1.3rem;
+    background-color: var(--modal-button-bg);
+    color: var(--button-font);
+    border-radius: 0;
+    border: none;
+    padding: 0.8rem 0;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+
+.modal-options svg {
+    fill: var(--button-font);
+    height: 1.7rem;
+    margin-right: 0.7rem;
+}
+
+.save-alert {
+    margin: auto;
+    border: none;
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    margin-top: 36.5rem;
+}
+
+.save-alert::backdrop {
+    background-color: transparent;
+}
+
+.save-alert div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 388px;
+}
+
+.save-alert p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.save-alert button {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+}
+
+.save-alert svg {
+    width: 2.5rem;
+}
+
+hr {
+    height: 2px;
+    margin: 0;
+    border: none;
+    background-color: var(--button-font);
+}
+
+.donate-button {
+    display: flex;
+    background-color: var(--button-bg);
+    font-size: 1.6rem;
+    width: 400px;
+    height: 220px;
+    text-align: center;
+    align-items: center;
+    border: var(--border-thick);
+    border-radius: 20px;
+    padding: 15px 30px;
+}
+
+.donate-button:hover {
+    background-color: var(--select-hover);
+    color: var(--font);
+    text-decoration: none;
+}
+
+.donate-button img {
+    height: 100%;
+}
+
+.saved-display {
+    width: 70vw;
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: 50% 50%;
+    margin: 1rem auto;
+}
+
+.theme-card {
+    width: 100%;
+    padding-top: 0.1rem;
+    border-radius: 15px;
+}
+
+.theme-card p {
+    color: var(--font);
+    font-size: 1.4rem;
+    padding: 0 10%;
+}
+
+.no-themes {
+    display: flex;
+    width: 440px;
+    background-color: var(--button-bg);
+    border: var(--border-thick);
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 2rem auto;
+}
+
+.no-themes img {
+    width: 170px;
+    border: var(--border-thick);
+    border-radius: 50%;
+}
+
+.no-themes p {
+    color: var(--font);
+    font-style: italic;
+    font-size: 1.4em;
+    margin: auto 0.5rem;
+}
+
+.saved-controls {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.saved-controls button {
+    width: 30%;
+    border-radius: 15px;
+    margin: 0 0 0.8rem;
+    padding: 0.2rem 0;
+    cursor: pointer;
+}
+
+.saved-controls svg {
+    height: 2rem;
+}
+
+.saved-controls dialog {
+    border-radius: 12px;
+    padding: 0.2rem;
+}
+
+.saved-controls dialog p {
+    font-size: 1.2rem;
+    margin: 0.4rem 0.8rem 0.2rem;
+}
+
+.saved-controls dialog button {
+    width: calc(50% - 1rem);
+    font-size: 1rem;
+    margin: 0.2rem 0.2rem 0.6rem;
+}
+
+.no-page-text {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    background-color: var(--light-red);
+    text-align: left;
+    align-items: center;
+    border: var(--dark-red) 5px solid;
+    border-radius: 2rem;
+    width: 560px;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+.no-page-text p {
+    color: var(--dark-red);
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.no-page-text img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.no-page-links {
+    display: flex;
+    flex-direction: column;
+    text-decoration: underline;
+    text-decoration-color: var(--dark-red);
+    -webkit-text-decoration-color: var(--dark-red);
+    width: 12ch;
+}
+
+.no-page-text a {
+    color: var(--dark-red);
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin: 0.1rem 0;
+}
+
+#info-button {
+    font-weight: bold;
+    font-family: "Roboto Slab";
+    background-color: transparent;
+    font-size: 1.5rem;
+    width: 90%;
+}
+
+#source {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 1rem;
+    color: var(--source-code);
+    margin: 1.4rem auto;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --navbar-margin: 0.6rem;
+    }
+    .navbar-links {
+        margin: 0.3rem auto;
+    }
+    .auth h2 {
+        font-size: 1.6rem;
+    }
+    .signup-form label, .login-form label {
+        font-size: 1.2rem;
+        margin: 1.7rem 0 0.7rem 0.3rem;
+    }
+    .signup-form span {
+        margin-left: 0.3rem;
+    }
+    .signup-input, .login-form input {
+        font-size: 1.1rem;
+        font-style: "italic";
+        width: 30ch;
+        padding: 0.2rem 0.3rem;
+        border-radius: 12px;
+    }
+    .signup-form button, .login-form button {
+        font-size: 1.2rem;
+        border-radius: 18px;
+        margin: 2.2rem auto 0;
+    }
+    .login-form svg, .signup-form svg {
+        height: 1.8rem;
+        margin-right: 0.5rem;
+    }
+    .login-warning {
+        width: 80vw;
+        border-radius: 20px;
+        padding: 0.7rem;
+    }
+    .login-warning p {
+        font-size: 1rem;
+        margin: 0.5rem 0.5rem;
+    }
+    .login-warning div {
+        display: flex;
+        flex-direction: column;
+    }
+    .login-warning button {
+        width: 96%;
+        height: 2.4rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    .log-in-to-view {
+        width: 280px;
+        border-radius: 25px;
+        padding: 1.2rem;
+    }
+    .log-in-to-view p {
+        font-size: 1.1rem;
+        margin: 0 0 1.2rem;
+    }
+    .log-in-to-view button {
+        font-size: 1.2rem;
+        width: 48%;
+        border-radius: 12px;
+        padding: 0.3rem 0;
+    }
+    .container {
+        width: 80vw;
+    }
+    .p1, a, h2 {
+        font-size: 1.35rem;
+    }
+    .about {
+        width: 90%;
+        text-align: center;
+        margin: auto;
+    }
+    .about-content .p1 {
+        font-size: 1rem;
+    }
+    .confirm {
+        width: 280px;
+        padding: 1rem;
+    }
+    .saved-controls .confirm {
+        width: 290px;
+        padding: 0.5rem;
+    }
+    .confirm p {
+        font-size: 1.35rem;
+        margin: 8px 4px 16px;
+    }
+    .saved-controls .confirm p {
+        font-size: 1.3rem;
+        margin: 4px 6px 6px;
+    }
+    .saved-controls .confirm button {
+        font-size: 1.2rem;
+        width: 46%;
+        margin: 8px 4px;
+    }
+    .confirm button {
+        font-size: 1.3rem;
+        width: 5rem;
+        margin: 8px 6px;
+        border-radius: 10px;
+        padding: 2px 0;
+    }
+    .confirm input {
+        font-size: 1.2rem;
+        margin: 6px auto;
+        border-radius: 8px;
+        padding: 0.3rem;
+    }
+    .theme, .more {
+        width: 300px;
+    }
+    .options div {
+        padding: 0.8rem 1.2rem;
+    }
+    .options p {
+        font-size: 1.3rem;
+    }
+    #saved-icon {
+        height: 1.75rem;
+    }
+    #explore-icon {
+        height: 2rem;
+    }
+    .options span {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+    }
+    .options button {
+        height: 2.3rem;
+        font-size: 1.1rem;
+    }
+    .theme input {
+        width: 6rem;
+        height: 2.5rem;
+    }
+    .themeHeader div {
+        margin: 12px;
+    }
+    .themeHeader label {
+        font-size: 1.15rem;
+    }
+    .themeHeader span {
+        font-size: 0.95rem;
+    }
+    .sample {
+        padding: 20px 0 0;
+    }
+    .sample p {
+        font-size: 1.45rem;
+        margin: 0 16px 20px;
+    }
+    .sample button {
+        font-size: 1.3rem;
+        border-radius: 12px;
+        padding: 6px 8px;
+        margin: 0px 6px 20px;
+    }
+    .save-alert {
+        border-radius: 12px;
+        padding: 0.3rem 0.7rem;
+        margin-top: 34.2rem;
+    }
+    .save-alert div {
+        width: calc(300px - 1.4rem);
+    }
+    .save-alert p {
+        font-size: 1rem;
+    }
+    .save-alert svg {
+        width: 1.8rem;
+    }
+    .modal-options {
+        font-size: 1.1rem;
+        padding: 0.6rem 0;
+    }
+    .modal-options svg {
+        height: 1.5rem;
+        margin-right: 0.4rem;
+    }
+    .donate-button {
+        width: 290px;
+        height: 150px;
+        font-size: 1.2rem;
+        border-radius: 15px;
+        padding: 10px 20px;
+    }
+    .saved-display {
+        display: inline;
+        margin: 0;
+    }
+    .theme-card {
+        width: 86vw;
+        margin: 1rem auto;
+        padding-top: 0.1rem;
+        border-radius: 15px;
+    }
+    .theme-card p {
+        font-size: 1.4rem;
+        margin: 0.6rem 0;
+    }
+    .no-themes {
+        width: 80vw;
+        border-radius: 15px;
+        padding: 1rem;
+    }
+    .no-themes img {
+        width: 28vw;
+    }
+    .no-themes p {
+        font-size: 1.2rem;
+        margin: auto 0.5rem;
+    }
+    .saved-controls button {
+        width: 30%;
+        margin: 0 0 0.8rem;
+        padding: 0.2rem 0;
+    }
+    .saved-controls svg {
+        height: 2rem;
+    }
+    .theme-info {
+        width: 300px;
+    }
+    .theme-info span {
+        font-size: 1rem;
+    }
+    .shadow-realm {
+        width: calc(86vw - 2rem);
+        margin: 2rem auto;
+    }
+    .no-page-text {
+        display: flex;
+        flex-direction: column;
+        width: 290px;
+    }
+    .no-page-text img {
+        position: absolute;
+        top: 51vh;
+        right: 20vw;
+        width: 7rem;
+    }
+    .no-page-text {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+    #info-title {
+        font-size: 1.4rem;
+        margin: 0.7rem 0.8rem 0.1rem;
+    }
+    #info-button {
+        font-size: 1.3rem;
+    }
+}
