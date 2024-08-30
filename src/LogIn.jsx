@@ -31,7 +31,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
 
     function login() {
         let id = 0;
-        axios.post("http://localhost:3001/users/login", {
+        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users/login", {
             username: username,
             password: password
         })
@@ -51,7 +51,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 navigate("/");
                 id = response.data.id;
                 return axios.get(
-                    `http://localhost:3001/users/settings/${id}`,
+                    `https://shinebulb-server-production-7e2b.up.railway.app/users/settings/${id}`,
                     { headers: { accessToken: response.data.token } }
                 );
             }
@@ -65,7 +65,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 });
                 themes[response.data.theme || 0]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
-                return axios.get(`http://localhost:3001/savedthemes/byUser/${response.data.id}`);
+                return axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${response.data.id}`);
             }
             else {
                 themes[parseInt(localStorage.getItem("theme")) || 0]();

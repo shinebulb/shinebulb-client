@@ -24,7 +24,7 @@ function App() {
     useEffect(() => {
         let id = 0;
         axios.get(
-            "http://localhost:3001/users/auth",
+            "https://shinebulb-server-production-7e2b.up.railway.app/users/auth",
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
             setAuthState(response.data.error ?
@@ -36,7 +36,7 @@ function App() {
             });
             if (!response.data.error) id = response.data.id;
             return axios.get(
-                `http://localhost:3001/users/settings/${id}`,
+                `https://shinebulb-server-production-7e2b.up.railway.app/users/settings/${id}`,
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             );
         }).then(response => {
@@ -49,7 +49,7 @@ function App() {
                 });
                 themes[response.data.theme || 0]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
-                return axios.get(`http://localhost:3001/savedthemes/byUser/${response.data.id}`);
+                return axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${response.data.id}`);
             }
             else {
                 themes[parseInt(localStorage.getItem("theme")) || 0]();

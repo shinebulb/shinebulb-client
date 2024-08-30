@@ -23,7 +23,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
 
     function applyTheme() {
         axios.put(
-            "http://localhost:3001/users/theme",
+            "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
             { theme: 3, id: authState.id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
@@ -32,7 +32,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
             constructor.current.close();
 
             return axios.put(
-                "http://localhost:3001/users/lastTheme",
+                "https://shinebulb-server-production-7e2b.up.railway.app/users/lastTheme",
                 { lastBg: localBg, lastFont: localFont, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             )
@@ -54,7 +54,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
 
     function saveTheme() {
         axios.post(
-            "http://localhost:3001/savedthemes",
+            "https://shinebulb-server-production-7e2b.up.railway.app/savedthemes",
             { bg: localBg, font: localFont },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {

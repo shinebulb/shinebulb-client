@@ -35,7 +35,7 @@ function SignUp({ settings }) {
     });
 
     function createUser(data) {
-        axios.post("http://localhost:3001/users", data);
+        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users", data);
         navigate("/login");
     }
 

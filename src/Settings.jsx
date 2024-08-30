@@ -33,7 +33,7 @@ function Settings({ settings, setSettings }) {
             }
             else {
                 axios.put(
-                    "http://localhost:3001/users/theme",
+                    "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
                     { theme: mode, id: authState.id },
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 ).then(response => {
@@ -64,7 +64,7 @@ function Settings({ settings, setSettings }) {
         }
         else {
             axios.put(
-                "http://localhost:3001/users/language",
+                "https://shinebulb-server-production-7e2b.up.railway.app/users/language",
                 { language: newLang, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             ).then(response => setSettings(
