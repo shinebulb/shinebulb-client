@@ -22,6 +22,7 @@ function App() {
     const [savedList, setSavedList] = useState([]);
 
     useEffect(() => {
+        themes[parseInt(localStorage.getItem("theme")) || 0]();
         let id = 0;
         axios.get(
             "https://shinebulb-server-production-7e2b.up.railway.app/users/auth",
