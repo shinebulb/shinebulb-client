@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
@@ -8,6 +8,10 @@ import { motion } from 'framer-motion';
 function Play({ bulb, settings, setSettings }) {
 
     const { authState } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (bulb.current) bulb.current.classList.toggle("on");
+    }, []);
 
     const bulbStates = ["off", "on"];
 
