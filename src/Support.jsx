@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import text from './assets/json/text.json';
 import { motion } from 'framer-motion';
@@ -6,6 +6,10 @@ import { motion } from 'framer-motion';
 function Support({ settings }) {
 
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        document.title = text[settings.language || 0].links[3];
+    }, []);
 
     return (
         <motion.div

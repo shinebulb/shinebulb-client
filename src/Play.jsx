@@ -10,6 +10,7 @@ function Play({ bulb, settings, setSettings }) {
     const { authState } = useContext(AuthContext);
 
     useEffect(() => {
+        document.title = text[settings.language || 0].links[0].toLowerCase();
         if (bulb.current) bulb.current.classList.toggle("on");
     }, []);
 

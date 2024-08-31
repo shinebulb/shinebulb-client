@@ -11,6 +11,7 @@ function Profile({ settings }) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
+        document.title = username;
         axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/users/userinfo/${username}`)
         .then(response => setUser(response.data));
     }, []);

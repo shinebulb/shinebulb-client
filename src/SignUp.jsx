@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -13,6 +13,10 @@ function SignUp({ settings }) {
     const { authState } = useContext(AuthContext);
 
     const [fieldType, setFieldType] = useState("password");
+
+    useEffect(() => {
+        document.title = text[settings.language || 0].auth[1];
+    }, []);
 
     const navigate = useNavigate();
 

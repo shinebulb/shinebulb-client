@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import text from './assets/json/text.json';
@@ -10,6 +10,11 @@ import LogInToView from './LogInToView';
 function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
 
     const { authState } = useContext(AuthContext);
+
+    useEffect(() => {
+        document.title = text[settings.language || 0].links[5];
+    }, []);
+
 
     const navigate = useNavigate();
     

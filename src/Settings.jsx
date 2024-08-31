@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
@@ -15,6 +15,10 @@ function Settings({ settings, setSettings }) {
     const { authState } = useContext(AuthContext);
     
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = text[settings.language || 0].links[1];
+    }, []);
 
     const constructorRef = useRef(null);
     const moreRef = useRef(null);

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
@@ -12,6 +12,11 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
     const { authState, setAuthState } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = text[settings.language || 0].auth[0];
+    }, []);
+
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
