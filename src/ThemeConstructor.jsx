@@ -24,7 +24,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
             setLocalBg(response.data.lastBg);
             setLocalFont(response.data.lastFont);
         });
-    })
+    }, []);
 
     function generateTheme() {
         setLocalBg(`#${Math.random().toString(16).substring(2, 8)}`);
