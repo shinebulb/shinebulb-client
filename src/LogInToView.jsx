@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import text from './assets/json/text.json';
-import lang from './assets/lang';
 
 function LogInToView({ settings }) {
 
@@ -9,9 +8,9 @@ function LogInToView({ settings }) {
 
     return (
         <div className="log-in-to-view">
-            <p>{text[lang(settings)].logInToView}</p>
-            <button onClick={() => navigate("/login")}>{text[lang(settings)].auth[0]}</button>
-            <button onClick={() => navigate("/signup")}>{text[lang(settings)].auth[1]}</button>
+            <p>{text[settings.language || 0].logInToView}</p>
+            <button onClick={() => navigate("/login")}>{text[settings.language || 0].auth[0]}</button>
+            <button onClick={() => navigate("/signup")}>{text[settings.language || 0].auth[1]}</button>
         </div>
     )
 }

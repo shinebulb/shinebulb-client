@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
 import text from './assets/json/text.json';
-import lang from './assets/lang';
 import { motion } from 'framer-motion';
 
 function Play({ bulb, settings, setSettings }) {
@@ -11,7 +10,7 @@ function Play({ bulb, settings, setSettings }) {
     const { authState } = useContext(AuthContext);
 
     useEffect(() => {
-        document.title = text[lang(settings)].links[0].toLowerCase();
+        document.title = text[settings.language || 0].links[0].toLowerCase();
         if ((settings.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
     });
 
@@ -99,22 +98,22 @@ function Play({ bulb, settings, setSettings }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <h2>{text[lang(settings)].headings[0]}</h2>
-            <p className="p1" id="text">{text[lang(settings)].text[bulbStates.indexOf(settings.bulbStatus)]}</p>
+            <h2>{text[settings.language || 0].headings[0]}</h2>
+            <p className="p1" id="text">{text[settings.language || 0].text[bulbStates.indexOf(settings.bulbStatus)]}</p>
             <label htmlFor="switch">
                 <img ref={bulb} src={`img/${settings.bulbStatus}.svg`} alt="the lightbulb" />
             </label>
             <div className="controls">
-                <button onClick={updateCount} id="switch">{text[lang(settings)].controls[0]}</button>
-                <button onClick={() => modal.current.showModal()}>{text[lang(settings)].controls[1]}</button>
+                <button onClick={updateCount} id="switch">{text[settings.language || 0].controls[0]}</button>
+                <button onClick={() => modal.current.showModal()}>{text[settings.language || 0].controls[1]}</button>
             </div>
             <dialog ref={modal} className="confirm">
-                <p>{text[lang(settings)].confirm[0]}</p>
-                <button onClick={resetCount}>{text[lang(settings)].confirm[1]}</button>
-                <button onClick={() => modal.current.close()}>{text[lang(settings)].confirm[2]}</button>
+                <p>{text[settings.language || 0].confirm[0]}</p>
+                <button onClick={resetCount}>{text[settings.language || 0].confirm[1]}</button>
+                <button onClick={() => modal.current.close()}>{text[settings.language || 0].confirm[2]}</button>
             </dialog>
             <h2 id="counter">{settings.bulbCount || 0}</h2>
-            <a onClick={() => navigate("/")}>{text[lang(settings)].back}</a>
+            <a onClick={() => navigate("/")}>{text[settings.language || 0].back}</a>
         </motion.div>
     )
 }

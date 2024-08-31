@@ -14,7 +14,6 @@ import Profile from './Profile';
 import NoPage from './NoPage';
 import themes from './assets/themes';
 import text from './assets/json/text.json';
-import lang from './assets/lang';
 
 function App() {
 
@@ -46,7 +45,7 @@ function App() {
                 setSettings({
                     bulbCount: response.data.bulbCount || 0,
                     bulbStatus: response.data.bulbStatus || "off",
-                    language: lang(response.data),
+                    language: response.data.language || 0,
                     theme: response.data.theme || 0
                 });
                 themes[response.data.theme || 0]();
@@ -58,7 +57,7 @@ function App() {
                 setSettings({
                     bulbCount: 0,
                     bulbStatus: "off",
-                    language: lang({ language: parseInt(localStorage.getItem("language")) }),
+                    language: parseInt(localStorage.getItem("language")) || 0,
                     theme: parseInt(localStorage.getItem("theme")) || 0
                 });
             }
@@ -75,7 +74,7 @@ function App() {
         setSettings({
             bulbCount: 0,
             bulbStatus: "off",
-            language: lang({ language: parseInt(localStorage.getItem("language")) }),
+            language: parseInt(localStorage.getItem("language")) || 0,
             theme: parseInt(localStorage.getItem("theme")) || 0
         });
         setSavedList([]);
@@ -87,14 +86,14 @@ function App() {
             <BrowserRouter>
                 <div className="navbar">
                     <div className="navbar-links">
-                        <Link to="/" style={{ marginLeft: "calc(var(--navbar-margin) * 2)" }}>{text[lang(settings) || 0].home}</Link>
+                        <Link to="/" style={{ marginLeft: "calc(var(--navbar-margin) * 2)" }}>{text[settings.language || 0 || 0].home}</Link>
                         {authState.status && <Link to={`/user/${authState.username}`} style={{ fontStyle: "italic", fontWeight: "normal" }}>{authState.username}</Link>}
                         <div className="auth-links">{!authState.status ?
                             <>
-                                <Link to="/signup" style={{ marginRight: "var(--navbar-margin)" }}>{text[lang(settings) || 0].auth[1]}</Link>
-                                <Link to="/login" style={{ marginRight: "calc(var(--navbar-margin) * 2)" }}>{text[lang(settings) || 0].auth[0]}</Link>
+                                <Link to="/signup" style={{ marginRight: "var(--navbar-margin)" }}>{text[settings.language || 0 || 0].auth[1]}</Link>
+                                <Link to="/login" style={{ marginRight: "calc(var(--navbar-margin) * 2)" }}>{text[settings.language || 0 || 0].auth[0]}</Link>
                             </>
-                            : <Link to="/" onClick={logout} style={{ marginRight: "calc(var(--navbar-margin) * 2)" }}>{text[lang(settings) || 0].auth[2]}</Link>
+                            : <Link to="/" onClick={logout} style={{ marginRight: "calc(var(--navbar-margin) * 2)" }}>{text[settings.language || 0 || 0].auth[2]}</Link>
                         }</div>
                     </div>
                     <hr />

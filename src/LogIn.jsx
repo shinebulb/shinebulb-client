@@ -4,7 +4,6 @@ import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
 import themes from './assets/themes';
 import text from './assets/json/text.json';
-import lang from './assets/lang';
 import paths from './assets/json/svg-paths.json';
 import { motion } from 'framer-motion';
 
@@ -15,7 +14,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = text[lang(settings)].auth[0];
+        document.title = text[settings.language || 0].auth[0];
     }, []);
 
 
@@ -66,7 +65,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 setSettings({
                     bulbCount: response.data.bulbCount || 0,
                     bulbStatus: response.data.bulbStatus || "off",
-                    language: lang(response.data),
+                    language: response.data.language || 0,
                     theme: response.data.theme || 0
                 });
                 themes[response.data.theme || 0]();
@@ -78,7 +77,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 setSettings({
                     bulbCount: 0,
                     bulbStatus: "off",
-                    language: lang({ language: parseInt(localStorage.getItem("language")) }),
+                    language: parseInt(localStorage.getItem("language")) || 0,
                     theme: parseInt(localStorage.getItem("theme")) || 0
                 });
             }
@@ -97,33 +96,33 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
         >
             {!authState.status ?
             <>
-                <h2 style={{width: "80vw"}}>{text[lang(settings)].login[0]}</h2>
+                <h2 style={{width: "80vw"}}>{text[settings.language || 0].login[0]}</h2>
                 <div className="login-warning" style={{display: warningDisplay}}>
-                    <p>{text[lang(settings)].logInWarning[0]}</p>
+                    <p>{text[settings.language || 0].logInWarning[0]}</p>
                     <div>
-                        <button onClick={() => hideWarning(false)}>{text[lang(settings)].logInWarning[1]}</button>
-                        <button onClick={() => hideWarning(true)}>{text[lang(settings)].logInWarning[2]}</button>
+                        <button onClick={() => hideWarning(false)}>{text[settings.language || 0].logInWarning[1]}</button>
+                        <button onClick={() => hideWarning(true)}>{text[settings.language || 0].logInWarning[2]}</button>
                     </div>
                 </div>
                 <div className="login-form">
-                    <label>{text[lang(settings)].signup[1]}:</label>
+                    <label>{text[settings.language || 0].signup[1]}:</label>
                     <input
                         type="text"
                         onChange={event => setUsername(event.target.value)}
                         value={username}
-                        placeholder={text[lang(settings)].login[1]}
+                        placeholder={text[settings.language || 0].login[1]}
                     />
                     <div>
-                        <label style={{margin: "0"}}>{text[lang(settings)].signup[3]}:</label>
+                        <label style={{margin: "0"}}>{text[settings.language || 0].signup[3]}:</label>
                         <svg onClick={() => setFieldType(fieldType === "password" ? "text" : "password")} fill={`var(--intermediate-${fieldType === "password" ? "green" : "red"})`} viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d={paths.hide[0]}/><path d={paths.hide[1]}/></svg>
                     </div>
                     <input
                         type={fieldType}
                         onChange={event => setPassword(event.target.value)}
                         value={password}
-                        placeholder={text[lang(settings)].login[2]}
+                        placeholder={text[settings.language || 0].login[2]}
                     />
-                    <button type="submit" onClick={login}>{text[lang(settings)].auth[0]}</button>
+                    <button type="submit" onClick={login}>{text[settings.language || 0].auth[0]}</button>
                 </div>
 
                 <dialog
@@ -136,7 +135,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                     }}
                 >
                     <div>
-                        <p>{text[lang(settings)].authNotifications[errorText]}</p>
+                        <p>{text[settings.language || 0].authNotifications[errorText]}</p>
                         <button onClick={() => alertRef.current.close()}>
                             <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" strokeWidth="1" fill="var(--dark-red)" fillRule="evenodd"><g id="work-case" transform="translate(91.520000, 91.520000)"><polygon id="Close" points={paths.cancel} /></g></g></svg>
                         </button>
@@ -144,7 +143,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 </dialog>
             </>
             : <>
-                <h2>{text[lang(settings)].authErrors[4]}</h2>
+                <h2>{text[settings.language || 0].authErrors[4]}</h2>
             </>}
         </motion.div>
     )
