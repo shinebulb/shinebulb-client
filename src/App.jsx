@@ -13,6 +13,7 @@ import SignUp from './SignUp';
 import Profile from './Profile';
 import NoPage from './NoPage';
 import themes from './assets/themes';
+import defaultLang from './assets/defaultLang';
 import text from './assets/json/text.json';
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
                 setSettings({
                     bulbCount: response.data.bulbCount || 0,
                     bulbStatus: response.data.bulbStatus || "off",
-                    language: response.data.language || 0,
+                    language: response.data.language === null ? defaultLang() : response.data.language,
                     theme: response.data.theme || 0
                 });
                 themes[response.data.theme || 0]();
@@ -57,7 +58,7 @@ function App() {
                 setSettings({
                     bulbCount: 0,
                     bulbStatus: "off",
-                    language: parseInt(localStorage.getItem("language")) || 0,
+                    language: localStorage.getItem("language") === null ? defaultLang() : parseInt(localStorage.getItem("language")),
                     theme: parseInt(localStorage.getItem("theme")) || 0
                 });
             }
@@ -74,7 +75,7 @@ function App() {
         setSettings({
             bulbCount: 0,
             bulbStatus: "off",
-            language: parseInt(localStorage.getItem("language")) || 0,
+            language: localStorage.getItem("language") === null ? defaultLang() : parseInt(localStorage.getItem("language")),
             theme: parseInt(localStorage.getItem("theme")) || 0
         });
         setSavedList([]);

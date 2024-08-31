@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
 import themes from './assets/themes';
+import defaultLang from './assets/defaultLang';
 import text from './assets/json/text.json';
 import paths from './assets/json/svg-paths.json';
 import { motion } from 'framer-motion';
@@ -65,7 +66,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 setSettings({
                     bulbCount: response.data.bulbCount || 0,
                     bulbStatus: response.data.bulbStatus || "off",
-                    language: response.data.language || 0,
+                    language: response.data.language === null ? defaultLang() : response.data.language,
                     theme: response.data.theme || 0
                 });
                 themes[response.data.theme || 0]();
@@ -77,7 +78,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 setSettings({
                     bulbCount: 0,
                     bulbStatus: "off",
-                    language: parseInt(localStorage.getItem("language")) || 0,
+                    language: localStorage.getItem("language") === null ? defaultLang() : parseInt(localStorage.getItem("language")),
                     theme: parseInt(localStorage.getItem("theme")) || 0
                 });
             }
