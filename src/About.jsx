@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import text from './assets/json/text.json';
 import lang from './assets/lang';
-import lang from './assets/lang';
 import { motion } from 'framer-motion';
 
 function About({ settings }) {

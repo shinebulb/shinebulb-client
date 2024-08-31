@@ -13,6 +13,7 @@ function Play({ bulb, settings, setSettings }) {
     useEffect(() => {
         document.title = text[lang(settings)].links[0].toLowerCase();
         if ((settings.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
+    });
 
     const bulbStates = ["off", "on"];
 
