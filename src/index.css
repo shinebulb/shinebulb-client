@@ -150,7 +150,7 @@ body {
 .login-warning {
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 420px;
     background-color: var(--light-yellow);
     color: var(--dark-yellow);
     align-items: center;

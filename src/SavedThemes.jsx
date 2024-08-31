@@ -15,7 +15,6 @@ function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
         document.title = text[settings.language || 0].links[5];
     }, []);
 
-
     const navigate = useNavigate();
     
     return (
