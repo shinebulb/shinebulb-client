@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import text from './assets/json/text.json';
 import { motion } from 'framer-motion';
@@ -6,6 +6,10 @@ import { motion } from 'framer-motion';
 function Home({ settings }) {
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "shinebulb"
+    }, []);
 
     return (
         <motion.div
