@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
 import text from './assets/json/text.json';
@@ -9,17 +9,27 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
 
     const [saveStatus, setSaveStatus] = useState(0);
 
+    const [localBg, setLocalBg] = useState("#2e5a97");
+    const [localFont, setLocalFont] = useState("#f1f1f1");
+
+    const alertRef = useRef(null);
+
+    const { authState } = useContext(AuthContext);
+
+    useEffect(() => {
+        axios.get(
+            "https://shinebulb-server-production-7e2b.up.railway.app/users/changeTheme",
+            { headers: { accessToken: localStorage.getItem("accessToken") } }
+        ).then(response => {
+            setLocalBg(response.data.lastBg);
+            setLocalFont(response.data.lastFont);
+        });
+    })
+
     function generateTheme() {
         setLocalBg(`#${Math.random().toString(16).substring(2, 8)}`);
         setLocalFont(`#${Math.random().toString(16).substring(2, 8)}`);
     }
-
-    const alertRef = useRef(null);
-
-    const [localBg, setLocalBg] = useState("#2e5a97");
-    const [localFont, setLocalFont] = useState("#f1f1f1");
-
-    const { authState } = useContext(AuthContext);
 
     function applyTheme() {
         axios.put(
