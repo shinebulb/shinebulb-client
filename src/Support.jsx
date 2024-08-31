@@ -9,7 +9,7 @@ function Support({ settings }) {
     const navigate = useNavigate();
     
     useEffect(() => {
-        document.title = text[lang(settings.language)].links[3];
+        document.title = text[lang(settings)].links[3];
     }, []);
 
     return (
@@ -21,11 +21,11 @@ function Support({ settings }) {
             transition={{duration: 0.5}}
         >
             <a className="donate-button" href="https://nowpayments.io/donation?api_key=YT62CT1-1NG4AQ3-HARDAGH-5VMQT4A" target="_blank" rel="noreferrer noopener">
-                <span>{text[lang(settings.language)].donate}</span>
+                <span>{text[lang(settings)].donate}</span>
                 <img src="img/donate.svg"/>
             </a>
             <div style={{height: "1rem"}}/>
-            <a onClick={() => navigate("/")}>{text[lang(settings.language)].back}</a>
+            <a onClick={() => navigate("/")}>{text[lang(settings)].back}</a>
         </motion.div>
     )
 }

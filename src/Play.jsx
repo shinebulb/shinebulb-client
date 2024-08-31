@@ -11,7 +11,7 @@ function Play({ bulb, settings, setSettings }) {
     const { authState } = useContext(AuthContext);
 
     useEffect(() => {
-        document.title = text[lang(settings.language)].links[0].toLowerCase();
+        document.title = text[lang(settings)].links[0].toLowerCase();
         if (bulb.current) bulb.current.classList.toggle("on");
     }, []);
 
@@ -99,22 +99,22 @@ function Play({ bulb, settings, setSettings }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <h2>{text[lang(settings.language)].headings[0]}</h2>
-            <p className="p1" id="text">{text[lang(settings.language)].text[bulbStates.indexOf(settings.bulbStatus)]}</p>
+            <h2>{text[lang(settings)].headings[0]}</h2>
+            <p className="p1" id="text">{text[lang(settings)].text[bulbStates.indexOf(settings.bulbStatus)]}</p>
             <label htmlFor="switch">
                 <img ref={bulb} src={`img/${settings.bulbStatus}.svg`} alt="the lightbulb" />
             </label>
             <div className="controls">
-                <button onClick={updateCount} id="switch">{text[lang(settings.language)].controls[0]}</button>
-                <button onClick={() => modal.current.showModal()}>{text[lang(settings.language)].controls[1]}</button>
+                <button onClick={updateCount} id="switch">{text[lang(settings)].controls[0]}</button>
+                <button onClick={() => modal.current.showModal()}>{text[lang(settings)].controls[1]}</button>
             </div>
             <dialog ref={modal} className="confirm">
-                <p>{text[lang(settings.language)].confirm[0]}</p>
-                <button onClick={resetCount}>{text[lang(settings.language)].confirm[1]}</button>
-                <button onClick={() => modal.current.close()}>{text[lang(settings.language)].confirm[2]}</button>
+                <p>{text[lang(settings)].confirm[0]}</p>
+                <button onClick={resetCount}>{text[lang(settings)].confirm[1]}</button>
+                <button onClick={() => modal.current.close()}>{text[lang(settings)].confirm[2]}</button>
             </dialog>
             <h2 id="counter">{settings.bulbCount || 0}</h2>
-            <a onClick={() => navigate("/")}>{text[lang(settings.language)].back}</a>
+            <a onClick={() => navigate("/")}>{text[lang(settings)].back}</a>
         </motion.div>
     )
 }

@@ -69,10 +69,10 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
 
     return (
         <div className="theme-card" style={{backgroundColor: bg}}>
-            <p style={{color: font}}>{title || `${text[lang(settings.language)].themeCard[0]} #${index + 1}`}</p>
+            <p style={{color: font}}>{title || `${text[lang(settings)].themeCard[0]} #${index + 1}`}</p>
             <div className="saved-controls">
                 <button
-                    title={text[lang(settings.language)].themeCard[1]}
+                    title={text[lang(settings)].themeCard[1]}
                     style={{
                         backgroundColor: bg,
                         border: `${font} 3px solid`
@@ -82,7 +82,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
                     <svg fill={font} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d={paths.rename[0]}/><path fillRule="evenodd" clipRule="evenodd" d={paths.rename[1]}/></svg>
                 </button>
                 <button
-                    title={text[lang(settings.language)].themeCard[2]}
+                    title={text[lang(settings)].themeCard[2]}
                     style={{
                         backgroundColor: bg,
                         border: `${font} 3px solid`
@@ -92,7 +92,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
                     <svg fill={font} version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xmlSpace="preserve"><path className="bentblocks_een" d={paths.paint}/></svg>
                 </button>
                 <button
-                    title={text[lang(settings.language)].themeCard[3]}
+                    title={text[lang(settings)].themeCard[3]}
                     style={{
                         backgroundColor: bg,
                         border: `${font} 3px solid`
@@ -103,14 +103,14 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
                 </button>
                 
                 <dialog ref={renameRef} className="confirm">
-                    <input type="text" ref={inputRef} placeholder={text[lang(settings.language)].savedDialogs[0]}/>
-                    <button onClick={renameTheme}>{text[lang(settings.language)].themeControls[0]}</button>
-                    <button onClick={() => renameRef.current.close()}>{text[lang(settings.language)].themeControls[1]}</button>
+                    <input type="text" ref={inputRef} placeholder={text[lang(settings)].savedDialogs[0]}/>
+                    <button onClick={renameTheme}>{text[lang(settings)].themeControls[0]}</button>
+                    <button onClick={() => renameRef.current.close()}>{text[lang(settings)].themeControls[1]}</button>
                 </dialog>
                 <dialog ref={deleteRef} className="confirm">
-                    <p>{text[lang(settings.language)].savedDialogs[1]}</p>
-                    <button onClick={deleteTheme}>{text[lang(settings.language)].confirm[1]}</button>
-                    <button onClick={() => deleteRef.current.close()}>{text[lang(settings.language)].confirm[2]}</button>
+                    <p>{text[lang(settings)].savedDialogs[1]}</p>
+                    <button onClick={deleteTheme}>{text[lang(settings)].confirm[1]}</button>
+                    <button onClick={() => deleteRef.current.close()}>{text[lang(settings)].confirm[2]}</button>
                 </dialog>
             </div>
         </div>

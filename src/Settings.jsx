@@ -18,7 +18,7 @@ function Settings({ settings, setSettings }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = text[lang(settings.language)].links[1];
+        document.title = text[lang(settings)].links[1];
     }, []);
 
     const constructorRef = useRef(null);
@@ -86,16 +86,16 @@ function Settings({ settings, setSettings }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <h2>{text[lang(settings.language)].headings[1]}</h2>
+            <h2>{text[lang(settings)].headings[1]}</h2>
             <div className="container">
-                <label className="settingName">{text[lang(settings.language)].settings[0]}</label>
+                <label className="settingName">{text[lang(settings)].settings[0]}</label>
                 <select onChange={themeChange} value={modes[settings.theme]}>
-                    <option value="system">{text[lang(settings.language)].mode[0]}</option>
-                    <option value="light">{text[lang(settings.language)].mode[1]}</option>
-                    <option value="dark">{text[lang(settings.language)].mode[2]}</option>
+                    <option value="system">{text[lang(settings)].mode[0]}</option>
+                    <option value="light">{text[lang(settings)].mode[1]}</option>
+                    <option value="dark">{text[lang(settings)].mode[2]}</option>
                     {authState.status && <>
-                        <option value="custom">{text[lang(settings.language)].mode[3]}</option>
-                        <option value="more...">{text[lang(settings.language)].mode[4]}</option>
+                        <option value="custom">{text[lang(settings)].mode[3]}</option>
+                        <option value="more...">{text[lang(settings)].mode[4]}</option>
                     </>}
                 </select>
             </div>
@@ -107,14 +107,14 @@ function Settings({ settings, setSettings }) {
             <More more={moreRef} settings={settings} />
             <div style={{ height: "3rem" }} />
             <div className="container">
-                <label>{text[lang(settings.language)].settings[1]}</label>
-                <select onChange={languageChange} value={languages[lang(settings.language)]}>
+                <label>{text[lang(settings)].settings[1]}</label>
+                <select onChange={languageChange} value={languages[lang(settings)]}>
                     <option value="en">english</option>
                     <option value="ru">русский</option>
                 </select>
             </div>
             <div style={{ height: "5rem" }} />
-            <a onClick={() => navigate("/")}>{text[lang(settings.language)].back}</a>
+            <a onClick={() => navigate("/")}>{text[lang(settings)].back}</a>
         </motion.div>
     );
 }

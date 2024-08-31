@@ -13,7 +13,7 @@ function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
     const { authState } = useContext(AuthContext);
 
     useEffect(() => {
-        document.title = text[lang(settings.language)].links[5];
+        document.title = text[lang(settings)].links[5];
     }, []);
 
 
@@ -29,9 +29,9 @@ function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
         >{!authState.status ? <LogInToView settings={settings} />
             : <>
                 
-                <h2 style={{fontSize: "1.7rem", marginTop: "6rem"}}>{text[lang(settings.language)].savedThemes[0]}</h2>
+                <h2 style={{fontSize: "1.7rem", marginTop: "6rem"}}>{text[lang(settings)].savedThemes[0]}</h2>
                 <h3 style={{color: "var(--font)", fontStyle: "italic"}}>
-                    {savedList.length} {text[lang(settings.language)].savedThemes[1]}
+                    {savedList.length} {text[lang(settings)].savedThemes[1]}
                 </h3>
                 <div style={{height: "0.1rem"}}/>
                 {savedList.length > 0
@@ -53,7 +53,7 @@ function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
                 }</div>
                 : <NoThemes settings={settings} />}
                 <div style={{height: "1rem"}}/>
-                <a onClick={() => navigate("/settings")}>{text[lang(settings.language)].back}</a>
+                <a onClick={() => navigate("/settings")}>{text[lang(settings)].back}</a>
                 <div style={{height: "2rem"}} />
             </>
         }</motion.div>

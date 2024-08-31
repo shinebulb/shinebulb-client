@@ -14,7 +14,7 @@ function NoThemes({ settings }) {
                 : `img/no themes/${images[Math.floor(Math.random() * images.length)]}.svg`
             }
             />
-            <p>{text[lang(settings.language)].noThemes}</p>
+            <p>{text[lang(settings)].noThemes}</p>
         </div>
     )
 }

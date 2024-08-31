@@ -20,12 +20,12 @@ function Home({ settings }) {
                 <p className="p2">shineb</p><img src="img/logo2.png"/><p className="p2">lb</p>
             </div>
             <div className="links">
-                <a onClick={() => navigate("/play")}>{text[lang(settings.language)].links[0]}</a>
-                <a onClick={() => navigate("/settings")}>{text[lang(settings.language)].links[1]}</a>
-                <a onClick={() => navigate("/about")}>{text[lang(settings.language)].links[2]}</a>
-                <a onClick={() => navigate("/support")}>{text[lang(settings.language)].links[3]}</a>
+                <a onClick={() => navigate("/play")}>{text[lang(settings)].links[0]}</a>
+                <a onClick={() => navigate("/settings")}>{text[lang(settings)].links[1]}</a>
+                <a onClick={() => navigate("/about")}>{text[lang(settings)].links[2]}</a>
+                <a onClick={() => navigate("/support")}>{text[lang(settings)].links[3]}</a>
             </div>
-            <a href="https://github.com/nurgalinchik/shinebulb" target="_blank" id="source">{text[lang(settings.language) || 0].source}</a>
+            <a href="https://github.com/nurgalinchik/shinebulb" target="_blank" id="source">{text[lang(settings) || 0].source}</a>
         </motion.div>
     )
 }
