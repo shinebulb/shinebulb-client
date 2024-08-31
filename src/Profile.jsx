@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import text from './assets/json/text.json';
+import lang from './assets/lang';
 import { motion } from 'framer-motion';
 
 function Profile({ settings }) {
@@ -32,9 +33,9 @@ function Profile({ settings }) {
             <h2>{username}</h2>
             <h2>{
                 user === null ? navigate("/page-not-found")
-                : `${text[settings.language || 0].joined} ${
+                : `${text[lang(settings.language)].joined} ${
                 new Date(user.createdAt)
-                .toLocaleDateString(locales[settings.language || 0], {
+                .toLocaleDateString(locales[lang(settings.language)], {
                     year: "numeric",
                     month: "long",
                     day: "numeric"

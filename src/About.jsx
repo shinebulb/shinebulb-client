@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import text from './assets/json/text.json';
+import lang from './assets/lang';
+import lang from './assets/lang';
 import { motion } from 'framer-motion';
 
 function About({ settings }) {
@@ -8,7 +10,7 @@ function About({ settings }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = text[settings.language || 0].links[2];
+        document.title = text[lang(settings.language)].links[2];
     }, []);
 
     return (
@@ -19,21 +21,21 @@ function About({ settings }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <h2>{text[settings.language || 0].headings[2]}</h2>
-            <p className="p1">{text[settings.language || 0].about[0]}</p>
+            <h2>{text[lang(settings.language)].headings[2]}</h2>
+            <p className="p1">{text[lang(settings.language)].about[0]}</p>
             <div style={{height: "1rem"}} />
             <div className="about-content">
-                <p className="p1">{text[settings.language || 0].about[1]}</p>
-                <p className="p1">{text[settings.language || 0].about[2]}</p>
-                <p className="p1">{text[settings.language || 0].about[3]}</p>
-                <p className="p1">{text[settings.language || 0].about[4]}</p>
-                <p className="p1">{text[settings.language || 0].about[5]}</p>
-                <p className="p1">{text[settings.language || 0].about[6]}</p>
+                <p className="p1">{text[lang(settings.language)].about[1]}</p>
+                <p className="p1">{text[lang(settings.language)].about[2]}</p>
+                <p className="p1">{text[lang(settings.language)].about[3]}</p>
+                <p className="p1">{text[lang(settings.language)].about[4]}</p>
+                <p className="p1">{text[lang(settings.language)].about[5]}</p>
+                <p className="p1">{text[lang(settings.language)].about[6]}</p>
             </div>
             <div style={{height: "1rem"}} />
             <div className="links">
-                <a href = "mailto:shinebulby@gmail.com?subject=contact">{text[settings.language || 0].contact}</a>
-                <a onClick={() => navigate("/")}>{text[settings.language || 0].back}</a>
+                <a href = "mailto:shinebulby@gmail.com?subject=contact">{text[lang(settings.language)].contact}</a>
+                <a onClick={() => navigate("/")}>{text[lang(settings.language)].back}</a>
             </div>
         </motion.div>
     )

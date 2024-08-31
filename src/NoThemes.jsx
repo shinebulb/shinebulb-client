@@ -1,5 +1,6 @@
 import React from 'react';
 import text from './assets/json/text.json';
+import lang from './assets/lang';
 
 function NoThemes({ settings }) {
 
@@ -13,7 +14,7 @@ function NoThemes({ settings }) {
                 : `img/no themes/${images[Math.floor(Math.random() * images.length)]}.svg`
             }
             />
-            <p>{text[settings.language || 0].noThemes}</p>
+            <p>{text[lang(settings.language)].noThemes}</p>
         </div>
     )
 }
