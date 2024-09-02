@@ -781,7 +781,7 @@ hr {
 }
 
 #source {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -793,6 +793,9 @@ hr {
 @media only screen and (max-width: 600px) {
     :root {
         --navbar-margin: 0.6rem;
+    }
+    .navbar a {
+        font-size: 1.2rem;
     }
     .navbar-links {
         margin: 0.3rem auto;
