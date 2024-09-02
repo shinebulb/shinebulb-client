@@ -20,12 +20,12 @@ function More({ more, settings }) {
                 }}>
                     <p>
                         <svg id="saved-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d={paths.save} strokeWidth="2" strokeLinejoin="round"/></svg>
-                        {text[settings.language || 0].saved}
+                        {text[settings.language].saved}
                     </p>
-                    <span>{text[settings.language || 0].optionDescriptions[0]}</span>
+                    <span>{text[settings.language].optionDescriptions[0]}</span>
                 </div>
                 <hr />
-                <button onClick={() => more.current.close()}>{text[settings.language || 0].back}</button>
+                <button onClick={() => more.current.close()}>{text[settings.language].back}</button>
             </div>
         </dialog>
     )

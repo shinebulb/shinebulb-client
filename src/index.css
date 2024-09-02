@@ -222,6 +222,14 @@ body {
     color: var(--light-yellow);
 }
 
+.devpage {
+    display: flex;
+    flex-direction: column;
+}
+.devpage a {
+    font-weight: normal;
+}
+
 .profile {
     width: 90vw;
     margin: auto;
@@ -777,7 +785,7 @@ hr {
     bottom: 0;
     left: 0;
     right: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--source-code);
     margin: 1.4rem auto;
 }

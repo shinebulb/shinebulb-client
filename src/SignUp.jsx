@@ -15,7 +15,7 @@ function SignUp({ settings }) {
     const [fieldType, setFieldType] = useState("password");
 
     useEffect(() => {
-        document.title = text[settings.language || 0].auth[1];
+        document.title = text[settings.language].auth[1];
     }, []);
 
     const navigate = useNavigate();
@@ -28,14 +28,14 @@ function SignUp({ settings }) {
     const validationSchema = Yup.object().shape({
         username: Yup
             .string()
-            .min(3, text[settings.language || 0].authErrors[0])
-            .max(15, text[settings.language || 0].authErrors[0])
-            .required(text[settings.language || 0].authErrors[1]),
+            .min(3, text[settings.language].authErrors[0])
+            .max(15, text[settings.language].authErrors[0])
+            .required(text[settings.language].authErrors[1]),
         password: Yup
             .string()
-            .min(4, text[settings.language || 0].authErrors[2])
-            .max(30, text[settings.language || 0].authErrors[2])
-            .required(text[settings.language || 0].authErrors[3]),
+            .min(4, text[settings.language].authErrors[2])
+            .max(30, text[settings.language].authErrors[2])
+            .required(text[settings.language].authErrors[3]),
     });
 
     function createUser(data) {
@@ -53,36 +53,36 @@ function SignUp({ settings }) {
         >
             {!authState.status ?
             <>
-                <h2>{text[settings.language || 0].signup[0]}</h2>
+                <h2>{text[settings.language].signup[0]}</h2>
                 <Formik
                     initialValues={initialValues}
                     onSubmit={createUser}
                     validationSchema={validationSchema}
                 >
                     <Form className="signup-form">
-                        <label>{text[settings.language || 0].signup[1]}:</label>
+                        <label>{text[settings.language].signup[1]}:</label>
                         <Field
                             className="signup-input"
                             name="username"
-                            placeholder={text[settings.language || 0].signup[2]}
+                            placeholder={text[settings.language].signup[2]}
                         />
                         <ErrorMessage name="username" component="span" />
                         <div>
-                            <label style={{margin: "0"}}>{text[settings.language || 0].signup[3]}:</label>
+                            <label style={{margin: "0"}}>{text[settings.language].signup[3]}:</label>
                             <svg onClick={() => setFieldType(fieldType === "password" ? "text" : "password")} fill={`var(--intermediate-${fieldType === "password" ? "green" : "red"})`} viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d={paths.hide[0]}/><path d={paths.hide[1]}/></svg>
                         </div>
                         <Field
                             className="signup-input"
                             type={fieldType}
                             name="password"
-                            placeholder={text[settings.language || 0].signup[4]}
+                            placeholder={text[settings.language].signup[4]}
                         />
                         <ErrorMessage name="password" component="span" />
-                        <button type="submit">{text[settings.language || 0].auth[1]}</button>
+                        <button type="submit">{text[settings.language].auth[1]}</button>
                     </Form>
                 </Formik>
             </>
-            : <h2>{text[settings.language || 0].authErrors[5]}</h2>}
+            : <h2>{text[settings.language].authErrors[5]}</h2>}
         </motion.div>
     )
 }

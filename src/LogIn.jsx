@@ -15,7 +15,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = text[settings.language || 0].auth[0];
+        document.title = text[settings.language].auth[0];
     }, []);
 
 
@@ -66,10 +66,10 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 setSettings({
                     bulbCount: response.data.bulbCount || 0,
                     bulbStatus: response.data.bulbStatus || "off",
-                    language: response.data.language === null ? defaultLang() : response.data.language,
-                    theme: response.data.theme || 0
+                    language: response.data.language === null ? settings.language : response.data.language,
+                    theme: response.data.theme === null ? settings.theme : response.data.theme
                 });
-                themes[response.data.theme || 0]();
+                themes[response.data.theme === null ? settings.theme : response.data.theme]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
                 return axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${response.data.id}`);
             }
@@ -97,33 +97,33 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
         >
             {!authState.status ?
             <>
-                <h2 style={{width: "80vw"}}>{text[settings.language || 0].login[0]}</h2>
+                <h2 style={{width: "80vw"}}>{text[settings.language].login[0]}</h2>
                 <div className="login-warning" style={{display: warningDisplay}}>
-                    <p>{text[settings.language || 0].logInWarning[0]}</p>
+                    <p>{text[settings.language].logInWarning[0]}</p>
                     <div>
-                        <button onClick={() => hideWarning(false)}>{text[settings.language || 0].logInWarning[1]}</button>
-                        <button onClick={() => hideWarning(true)}>{text[settings.language || 0].logInWarning[2]}</button>
+                        <button onClick={() => hideWarning(false)}>{text[settings.language].logInWarning[1]}</button>
+                        <button onClick={() => hideWarning(true)}>{text[settings.language].logInWarning[2]}</button>
                     </div>
                 </div>
                 <div className="login-form">
-                    <label>{text[settings.language || 0].signup[1]}:</label>
+                    <label>{text[settings.language].signup[1]}:</label>
                     <input
                         type="text"
                         onChange={event => setUsername(event.target.value)}
                         value={username}
-                        placeholder={text[settings.language || 0].login[1]}
+                        placeholder={text[settings.language].login[1]}
                     />
                     <div>
-                        <label style={{margin: "0"}}>{text[settings.language || 0].signup[3]}:</label>
+                        <label style={{margin: "0"}}>{text[settings.language].signup[3]}:</label>
                         <svg onClick={() => setFieldType(fieldType === "password" ? "text" : "password")} fill={`var(--intermediate-${fieldType === "password" ? "green" : "red"})`} viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d={paths.hide[0]}/><path d={paths.hide[1]}/></svg>
                     </div>
                     <input
                         type={fieldType}
                         onChange={event => setPassword(event.target.value)}
                         value={password}
-                        placeholder={text[settings.language || 0].login[2]}
+                        placeholder={text[settings.language].login[2]}
                     />
-                    <button type="submit" onClick={login}>{text[settings.language || 0].auth[0]}</button>
+                    <button type="submit" onClick={login}>{text[settings.language].auth[0]}</button>
                 </div>
 
                 <dialog
@@ -136,7 +136,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                     }}
                 >
                     <div>
-                        <p>{text[settings.language || 0].authNotifications[errorText]}</p>
+                        <p>{text[settings.language].authNotifications[errorText]}</p>
                         <button onClick={() => alertRef.current.close()}>
                             <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" strokeWidth="1" fill="var(--dark-red)" fillRule="evenodd"><g id="work-case" transform="translate(91.520000, 91.520000)"><polygon id="Close" points={paths.cancel} /></g></g></svg>
                         </button>
@@ -144,7 +144,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 </dialog>
             </>
             : <>
-                <h2>{text[settings.language || 0].authErrors[4]}</h2>
+                <h2>{text[settings.language].authErrors[4]}</h2>
             </>}
         </motion.div>
     )

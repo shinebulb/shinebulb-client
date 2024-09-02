@@ -8,9 +8,9 @@ function LogInToView({ settings }) {
 
     return (
         <div className="log-in-to-view">
-            <p>{text[settings.language || 0].logInToView}</p>
-            <button onClick={() => navigate("/login")}>{text[settings.language || 0].auth[0]}</button>
-            <button onClick={() => navigate("/signup")}>{text[settings.language || 0].auth[1]}</button>
+            <p>{text[settings.language].logInToView}</p>
+            <button onClick={() => navigate("/login")}>{text[settings.language].auth[0]}</button>
+            <button onClick={() => navigate("/signup")}>{text[settings.language].auth[1]}</button>
         </div>
     )
 }

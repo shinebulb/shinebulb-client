@@ -1,7 +1,7 @@
 [
     {
         "headings": ["the lightbulb", "settings", "about"],
-        "links": ["PLAY", "settings", "about", "support us", "suggestions", "saved", "hidden themes", "page not found!"],
+        "links": ["PLAY", "settings", "about", "support us", "suggestions", "saved", "hidden themes", "page not found!", "shinebulb development"],
         "source": "source code",
         "confirm": ["are you sure you want to reset the counter?", "yes", "no"],
         "text": ["sad :(", "happy!"],
@@ -50,12 +50,14 @@
         "logInWarning": [
             "warning! make sure to carefully check your username and password before logging in. inputting an incorrect combination may cause unexpected errors!",
             "hide", "don't show again"
-        ]
+        ],
+        "version": "current version",
+        "devSides": ["github repositories:", "and earlier", "client", "server"]
     },
 
     {
         "headings": ["лампочка", "настройки", "о нас"],
-        "links": ["ИГРАТЬ", "настройки", "о нас", "поддержать", "предложения", "сохранённые", "скрытые темы", "страница не найдена!"],
+        "links": ["ИГРАТЬ", "настройки", "о нас", "поддержать", "предложения", "сохранённые", "скрытые темы", "страница не найдена!", "разработка shinebulb"],
         "source": "исходный код",
         "confirm": ["вы уверены, что хотите очистить счётчик?", "да", "нет"],
         "text": ["грустная :(", "счастливая!"],
@@ -104,6 +106,8 @@
         "logInWarning": [
             "предупреждение! внимательно проверьте имя пользователя и пароль перед входом в аккаунт. введение неверной комбинации может привести к неожиданным ошибкам!",
             "скрыть", "больше не показывать"
-        ]
+        ],
+        "version": "текущая версия",
+        "devSides": ["репозитории на github:", "и раньше", "клиент", "сервер"]
     }
 ]

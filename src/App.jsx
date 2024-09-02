@@ -7,6 +7,7 @@ import Play from './Play';
 import Settings from './Settings';
 import About from './About';
 import Support from './Support';
+import DevPage from './DevPage';
 import SavedThemes from './SavedThemes';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
@@ -19,7 +20,12 @@ import text from './assets/json/text.json';
 function App() {
 
     const [authState, setAuthState] = useState({ username: "", id: 0, status: false });
-    const [settings, setSettings] = useState({});
+    const [settings, setSettings] = useState({
+        bulbCount: 0,
+        bulbStatus: "off",
+        language: localStorage.getItem("language") === null ? defaultLang() : localStorage.getItem("language"),
+        theme: parseInt(localStorage.getItem("theme")) || 0
+    });
     const [savedList, setSavedList] = useState([]);
 
     useEffect(() => {
@@ -46,21 +52,12 @@ function App() {
                 setSettings({
                     bulbCount: response.data.bulbCount || 0,
                     bulbStatus: response.data.bulbStatus || "off",
-                    language: response.data.language === null ? defaultLang() : response.data.language,
-                    theme: response.data.theme || 0
+                    language: response.data.language === null ? settings.language : response.data.language,
+                    theme: response.data.theme === null ? settings.theme : response.data.theme
                 });
-                themes[response.data.theme || 0]();
+                themes[response.data.theme === null ? settings.theme : response.data.theme]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
                 return axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${response.data.id}`);
-            }
-            else {
-                themes[parseInt(localStorage.getItem("theme")) || 0]();
-                setSettings({
-                    bulbCount: 0,
-                    bulbStatus: "off",
-                    language: localStorage.getItem("language") === null ? defaultLang() : parseInt(localStorage.getItem("language")),
-                    theme: parseInt(localStorage.getItem("theme")) || 0
-                });
             }
         }).then(response => {
             if (response !== undefined) setSavedList(response.data);
@@ -70,6 +67,8 @@ function App() {
     const bulb = useRef(null);
 
     function logout() {
+        document.body.classList.add('theme-transition');
+        setTimeout(() => document.body.classList.remove('theme-transition'), 500);
         themes[parseInt(localStorage.getItem("theme")) || 0]();
         setAuthState({ username: "", id: 0, status: false });
         setSettings({
@@ -105,6 +104,7 @@ function App() {
                     <Route path="/settings" element={<Settings settings={settings} setSettings={setSettings} />} />
                     <Route path="/about" element={<About settings={settings} />} />
                     <Route path="/support" element={<Support settings={settings} />} />
+                    <Route path="/development" element={<DevPage settings={settings} />} />
                     <Route path="/saved" element={<SavedThemes settings={settings} setSettings={setSettings} savedList={savedList} setSavedList={setSavedList} />} />
                     <Route path="/login" element={<LogIn bulb={bulb} settings={settings} setSettings={setSettings} setSavedList={setSavedList} />} />
                     <Route path="/signup" element={<SignUp settings={settings} />} />

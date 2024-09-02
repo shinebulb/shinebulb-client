@@ -32,9 +32,9 @@ function Profile({ settings }) {
             <h2>{username}</h2>
             <h2>{
                 user === null ? navigate("/page-not-found")
-                : `${text[settings.language || 0].joined} ${
+                : `${text[settings.language].joined} ${
                 new Date(user.createdAt)
-                .toLocaleDateString(locales[settings.language || 0], {
+                .toLocaleDateString(locales[settings.language], {
                     year: "numeric",
                     month: "long",
                     day: "numeric"
