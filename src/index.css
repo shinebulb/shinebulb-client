@@ -191,6 +191,7 @@ body {
 .loading-button {
     display: flex;
     text-align: center;
+    cursor: pointer;
 }
 
 .loading-button p {

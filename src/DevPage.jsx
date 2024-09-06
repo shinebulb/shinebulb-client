@@ -32,7 +32,7 @@ function DevPage({ settings }) {
                 shinebulb-3 {text[settings.language].devSides[3]}
             </a>
             <div style={{height: "2rem"}}/>
-            <a onClick={() => navigate("/")} style={{fontWeight: "bold"}}>{text[settings.language].back}</a>
+            <a onClick={() => navigate("/")} style={{fontWeight: "bold", textDecoration: "none"}}>{text[settings.language].back}</a>
         </motion.div>
     )
 }
