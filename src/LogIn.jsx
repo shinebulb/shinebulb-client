@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
+import LoadingButton from './LoadingButton';
 import axios from 'axios';
 import themes from './assets/themes';
 import defaultLang from './assets/defaultLang';
@@ -27,6 +28,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
     const [warningDisplay, setWaringDisplay] = useState(localStorage.getItem("warningDisplay") || "flex");
 
     const [errorText, setErrorText] = useState(0);
+    const [loadLogIn, setLoadLogIn] = useState(false);
 
     const alertRef = useRef(null);
 
@@ -37,12 +39,14 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
 
     function login() {
         let id = 0;
+        setLoadLogIn(true);
         axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users/login", {
             username: username,
             password: password
         })
         .then(response => {
             if (response.data.error) {
+                setLoadLogIn(false);
                 setErrorText(Number(response.data.error));
                 alertRef.current.showModal();
                 setTimeout(() => alertRef.current.close(), 1500);
@@ -123,7 +127,8 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                         value={password}
                         placeholder={text[settings.language].login[2]}
                     />
-                    <button type="submit" onClick={login}>{text[settings.language].auth[0]}</button>
+                    {loadLogIn ? <LoadingButton settings={settings} />
+                    : <button type="submit" onClick={login}>{text[settings.language].auth[0]}</button>}
                 </div>
 
                 <dialog

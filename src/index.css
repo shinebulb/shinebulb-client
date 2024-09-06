@@ -188,6 +188,39 @@ body {
     color: var(--light-yellow);
 }
 
+.loading-button {
+    display: flex;
+    text-align: center;
+}
+
+.loading-button p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 0.9rem auto 0 1rem;
+}
+
+.loader {
+    width: 2.2rem;
+    height: 2.2rem;
+    border: 5px solid var(--font);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin-left: auto;
+    margin-top: 0.9rem;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
 .log-in-to-view {
     width: 420px;
     background-color: var(--light-yellow);
