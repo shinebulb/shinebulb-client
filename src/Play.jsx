@@ -9,12 +9,13 @@ function Play({ bulb, settings, setSettings }) {
 
     const { authState } = useContext(AuthContext);
 
-    const [loadCount, setLoadCount] = useState(false);
+    const [loadSwitch, setLoadSwitch] = useState(false);
+    const [loadReset, setLoadReset] = useState(false);
 
     useEffect(() => {
         document.title = text[settings.language].links[0].toLowerCase();
         if ((settings.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
-    });
+    }, []);
 
     const bulbStates = ["off", "on"];
 
@@ -23,7 +24,7 @@ function Play({ bulb, settings, setSettings }) {
     const modal = useRef(null);
 
     function updateCount() {
-        setLoadCount(true);
+        setLoadSwitch(true);
         if (authState.status) {
             axios.all([
                 axios.put(
@@ -44,7 +45,7 @@ function Play({ bulb, settings, setSettings }) {
                 });
                 new Audio(`audio/${status.data}.mp3`).play();
                 bulb.current.classList.toggle("on");
-                setLoadCount(false);
+                setLoadSwitch(false);
             }));
         }
         else {
@@ -59,6 +60,7 @@ function Play({ bulb, settings, setSettings }) {
     }
 
     function resetCount() {
+        setLoadReset(true);
         if (authState.status) {
             axios.all([
                 axios.put(
@@ -80,6 +82,7 @@ function Play({ bulb, settings, setSettings }) {
                 new Audio("audio/off.mp3").play();
                 bulb.current.classList.remove("on");
                 modal.current.close();
+                setLoadReset(false);
             }));
         }
         else {
@@ -109,14 +112,17 @@ function Play({ bulb, settings, setSettings }) {
             </label>
             <div className="controls">
                 <button onClick={updateCount} id="switch">{
-                    loadCount ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
+                    loadSwitch ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
                     : text[settings.language].controls[0]
                 }</button>
                 <button onClick={() => modal.current.showModal()}>{text[settings.language].controls[1]}</button>
             </div>
             <dialog ref={modal} className="confirm">
                 <p>{text[settings.language].confirm[0]}</p>
-                <button onClick={resetCount}>{text[settings.language].confirm[1]}</button>
+                <button onClick={resetCount}>{
+                    loadReset ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
+                    : text[settings.language].confirm[1]
+                }</button>
                 <button onClick={() => modal.current.close()}>{text[settings.language].confirm[2]}</button>
             </dialog>
             <h2 id="counter">{settings.bulbCount || 0}</h2>
