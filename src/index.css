@@ -192,7 +192,7 @@ body {
 }
 
 .loader {
-    border: 3px solid var(--font);
+    border: 3px solid var(--button-font);
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
