@@ -37,7 +37,6 @@ function Play({ bulb, settings, setSettings }) {
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 )
             ]).then(axios.spread((count, status) => {
-                setLoadCount(false);
                 setSettings({
                     ...settings,
                     bulbCount: count.data,
@@ -45,6 +44,7 @@ function Play({ bulb, settings, setSettings }) {
                 });
                 new Audio(`audio/${status.data}.mp3`).play();
                 bulb.current.classList.toggle("on");
+                setLoadCount(false);
             }));
         }
         else {
