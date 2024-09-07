@@ -122,6 +122,9 @@ body {
 
 .signup-form button, .login-form button {
     font-family: "Roboto Slab";
+    display: flex;
+    min-width: 7rem;
+    justify-content: center;
     background-color: var(--button-bg);
     color: var(--font);
     border: var(--border-thick);
@@ -188,29 +191,13 @@ body {
     color: var(--light-yellow);
 }
 
-.loading-button {
-    display: flex;
-    text-align: center;
-    cursor: pointer;
-}
-
-.loading-button p {
-    font-size: 1.2rem;
-    font-style: italic;
-    margin: 0.9rem auto 0 1rem;
-}
-
 .loader {
-    width: 2.2rem;
-    height: 2.2rem;
-    border: 5px solid var(--font);
+    border: 3px solid var(--font);
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    margin-left: auto;
-    margin-top: 0.9rem;
 }
 
 @keyframes rotation {
@@ -279,6 +266,8 @@ body {
     background-color: var(--button-bg);
     color: var(--button-font);
     border: var(--border-thick);
+    min-width: 7rem;
+    min-height: 2.5rem;
     font-size: 1.1rem;
     border-radius: 8px;
     margin: 0.5rem 0.3rem;

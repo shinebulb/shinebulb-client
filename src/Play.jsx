@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 function Play({ bulb, settings, setSettings }) {
 
     const { authState } = useContext(AuthContext);
+
+    const [loadCount, setLoadCount] = useState(false);
 
     useEffect(() => {
         document.title = text[settings.language].links[0].toLowerCase();
@@ -21,6 +23,7 @@ function Play({ bulb, settings, setSettings }) {
     const modal = useRef(null);
 
     function updateCount() {
+        setLoadCount(true);
         if (authState.status) {
             axios.all([
                 axios.put(
@@ -34,6 +37,7 @@ function Play({ bulb, settings, setSettings }) {
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 )
             ]).then(axios.spread((count, status) => {
+                setLoadCount(false);
                 setSettings({
                     ...settings,
                     bulbCount: count.data,
@@ -104,7 +108,10 @@ function Play({ bulb, settings, setSettings }) {
                 <img ref={bulb} src={`img/${settings.bulbStatus}.svg`} alt="the lightbulb" />
             </label>
             <div className="controls">
-                <button onClick={updateCount} id="switch">{text[settings.language].controls[0]}</button>
+                <button onClick={updateCount} id="switch">{
+                    loadCount ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
+                    : text[settings.language].controls[0]
+                }</button>
                 <button onClick={() => modal.current.showModal()}>{text[settings.language].controls[1]}</button>
             </div>
             <dialog ref={modal} className="confirm">

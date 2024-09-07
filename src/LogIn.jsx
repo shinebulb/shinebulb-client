@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
-import LoadingButton from './LoadingButton';
 import axios from 'axios';
 import themes from './assets/themes';
 import defaultLang from './assets/defaultLang';
@@ -127,8 +126,10 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                         value={password}
                         placeholder={text[settings.language].login[2]}
                     />
-                    {loadLogIn ? <LoadingButton settings={settings} />
-                    : <button type="submit" onClick={login}>{text[settings.language].auth[0]}</button>}
+                    <button type="submit" onClick={login}>{
+                        loadLogIn ? <span className="loader" style={{ width: "1.6rem", height: "1.6rem" }} />
+                        : text[settings.language].auth[0]
+                    }</button>
                 </div>
 
                 <dialog
