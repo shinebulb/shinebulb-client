@@ -13,6 +13,8 @@ function SignUp({ settings }) {
     const { authState } = useContext(AuthContext);
 
     const [fieldType, setFieldType] = useState("password");
+    
+    const [loadSignUp, setLoadSignUp] = useState(false);
 
     useEffect(() => {
         document.title = text[settings.language].auth[1];
@@ -39,8 +41,12 @@ function SignUp({ settings }) {
     });
 
     function createUser(data) {
-        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users", data);
-        navigate("/login");
+        setLoadSignUp(true);
+        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users", data)
+        .then(() => {
+            navigate("/login");
+            setLoadSignUp(false);
+        });
     }
 
     return (

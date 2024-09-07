@@ -9,11 +9,17 @@ function Profile({ settings }) {
     const navigate = useNavigate();
 
     const [user, setUser] = useState({});
+    
+    const [loadUser, setLoadUser] = useState(false);
 
     useEffect(() => {
+        setLoadUser(true);
         document.title = username;
         axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/users/userinfo/${username}`)
-        .then(response => setUser(response.data));
+        .then(response => {
+            setUser(response.data);
+            setLoadUser(false);
+        });
     }, []);
 
     const { username } = useParams();
@@ -21,7 +27,6 @@ function Profile({ settings }) {
     const locales = ["en-us", "ru-ru"];
     
     return (
-
         <motion.div
             className='profile'
             initial={{opacity: 0}}
@@ -29,18 +34,23 @@ function Profile({ settings }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <h2>{username}</h2>
-            <h2>{
+            {loadUser ? <span className="loader" style={{width: "5rem", height: "5rem", borderWidth: "7px"}} />
+            : <>{
                 user === null ? navigate("/page-not-found")
-                : `${text[settings.language].joined} ${
-                new Date(user.createdAt)
-                .toLocaleDateString(locales[settings.language], {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric"
-                })
-                .toLowerCase()
-            }`}</h2>
+                : <>
+                    <h2>{username}</h2>
+                    <h2>{
+                        `${text[settings.language].joined} ${
+                        new Date(user.createdAt)
+                        .toLocaleDateString(locales[settings.language], {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+                        })
+                        .toLowerCase()
+                    }`}</h2>
+                </>
+            }</>}
         </motion.div>
     )
 }
