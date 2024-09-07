@@ -52,8 +52,7 @@
             "hide", "don't show again"
         ],
         "version": "current version",
-        "devSides": ["github repositories:", "and earlier", "client", "server"],
-        "loggingIn": "logging you in!"
+        "devSides": ["github repositories:", "and earlier", "client", "server"]
     },
 
     {
@@ -109,7 +108,6 @@
             "скрыть", "больше не показывать"
         ],
         "version": "текущая версия",
-        "devSides": ["репозитории на github:", "и раньше", "клиент", "сервер"],
-        "loggingIn": "выполняем вход!"
+        "devSides": ["репозитории на github:", "и раньше", "клиент", "сервер"]
     }
 ]
