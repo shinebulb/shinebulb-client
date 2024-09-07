@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
@@ -13,7 +13,10 @@ import {motion} from 'framer-motion';
 function Settings({ settings, setSettings }) {
 
     const { authState } = useContext(AuthContext);
-    
+
+    const [loadLang, setLoadLang] = useState(false);
+    const [loadTheme, setLoadTheme] = useState(false);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,6 +25,14 @@ function Settings({ settings, setSettings }) {
 
     const constructorRef = useRef(null);
     const moreRef = useRef(null);
+
+    const loaderStyles = {
+        width: "1.5rem",
+        height: "1.5rem",
+        borderColor: "var(--font)",
+        borderBottomColor: "transparent",
+        marginRight: "0.7rem"
+    };
 
     function themeChange(event) {
         const mode = modes.indexOf(event.target.value);
@@ -36,6 +47,7 @@ function Settings({ settings, setSettings }) {
                 localStorage.setItem("theme", mode);
             }
             else {
+                setLoadTheme(true);
                 axios.put(
                     "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
                     { theme: mode, id: authState.id },
@@ -47,6 +59,7 @@ function Settings({ settings, setSettings }) {
                     }, 500);
                     themes[mode]();
                     setSettings({...settings, theme: response.data});
+                    setLoadTheme(false);
                 });
             }
         }
@@ -59,6 +72,7 @@ function Settings({ settings, setSettings }) {
     }
 
     function languageChange(event) {
+        setLoadLang(true);
         const newLang = languages.indexOf(event.target.value);
         if (!authState.status) {
             localStorage.setItem("language", newLang);
@@ -71,9 +85,13 @@ function Settings({ settings, setSettings }) {
                 "https://shinebulb-server-production-7e2b.up.railway.app/users/language",
                 { language: newLang, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
-            ).then(response => setSettings(
-                { ...settings, language: response.data || newLang }
-            ));
+            ).then(response => {
+                setSettings(
+                    { ...settings, language: response.data || newLang }
+                );
+                document.title = text[response.data || newLang].links[1];
+                setLoadLang(false);
+            });
         }
     }
 
@@ -88,15 +106,18 @@ function Settings({ settings, setSettings }) {
             <h2>{text[settings.language].headings[1]}</h2>
             <div className="container">
                 <label className="settingName">{text[settings.language].settings[0]}</label>
-                <select onChange={themeChange} value={modes[settings.theme]}>
-                    <option value="system">{text[settings.language].mode[0]}</option>
-                    <option value="light">{text[settings.language].mode[1]}</option>
-                    <option value="dark">{text[settings.language].mode[2]}</option>
-                    {authState.status && <>
-                        <option value="custom">{text[settings.language].mode[3]}</option>
-                        <option value="more...">{text[settings.language].mode[4]}</option>
-                    </>}
-                </select>
+                <div>
+                    {loadTheme && <span className="loader" style={loaderStyles} />}
+                    <select onChange={themeChange} value={modes[settings.theme]}>
+                        <option value="system">{text[settings.language].mode[0]}</option>
+                        <option value="light">{text[settings.language].mode[1]}</option>
+                        <option value="dark">{text[settings.language].mode[2]}</option>
+                        {authState.status && <>
+                            <option value="custom">{text[settings.language].mode[3]}</option>
+                            <option value="more...">{text[settings.language].mode[4]}</option>
+                        </>}
+                    </select>
+                </div>
             </div>
             <ThemeConstructor
                 constructor={constructorRef}
@@ -107,10 +128,13 @@ function Settings({ settings, setSettings }) {
             <div style={{ height: "3rem" }} />
             <div className="container">
                 <label>{text[settings.language].settings[1]}</label>
-                <select onChange={languageChange} value={languages[settings.language]}>
-                    <option value="en">english</option>
-                    <option value="ru">русский</option>
-                </select>
+                <div>
+                    {loadLang && <span className="loader" style={loaderStyles} />}
+                    <select onChange={languageChange} value={languages[settings.language]}>
+                        <option value="en">english</option>
+                        <option value="ru">русский</option>
+                    </select>
+                </div>
             </div>
             <div style={{ height: "5rem" }} />
             <a onClick={() => navigate("/")}>{text[settings.language].back}</a>

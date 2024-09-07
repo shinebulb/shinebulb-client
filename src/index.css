@@ -317,6 +317,11 @@ h2 {
     justify-content: space-between;
 }
 
+.container div {
+    display: flex;
+    align-items: center;
+}
+
 .container label {
     font-size: 1.5rem;
     color: var(--font);
@@ -567,6 +572,12 @@ a:hover {
 
 .sample {
     padding: 24px 0 0;
+}
+
+.sample div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sample p {

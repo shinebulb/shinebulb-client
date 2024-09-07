@@ -12,9 +12,19 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
     const [localBg, setLocalBg] = useState("#2e5a97");
     const [localFont, setLocalFont] = useState("#f1f1f1");
 
+    const [loadApply, setLoadApply] = useState(false);
+    const [loadSave, setLoadSave] = useState(false);
+
     const alertRef = useRef(null);
 
     const { authState } = useContext(AuthContext);
+
+    const loaderStyles = {
+        width: "1.1rem",
+        height: "1.1rem",
+        borderColor: localFont,
+        borderBottomColor: "transparent"
+    }
 
     useEffect(() => {
         axios.get(
@@ -32,21 +42,23 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
     }
 
     function applyTheme() {
+        setLoadApply(true);
         axios.put(
             "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
             { theme: 3, id: authState.id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
-
-            setSettings({ ...settings, theme: 3 });
-            constructor.current.close();
-
             return axios.put(
                 "https://shinebulb-server-production-7e2b.up.railway.app/users/lastTheme",
                 { lastBg: localBg, lastFont: localFont, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
-            )
+            );
         }).then(response => {
+            
+            setSettings({ ...settings, theme: 3 });
+            constructor.current.close();
+
+            setLoadApply(false);
 
             document.body.classList.remove("dark");
             document.body.classList.remove("light");
@@ -63,11 +75,13 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
     }
 
     function saveTheme() {
+        setLoadSave(true);
         axios.post(
             "https://shinebulb-server-production-7e2b.up.railway.app/savedthemes",
             { bg: localBg, font: localFont },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
+            setLoadSave(false);
             setSaveStatus(Number(response.data.status));
             alertRef.current.showModal();
             setTimeout(() => alertRef.current.close(), 1500);
@@ -100,27 +114,31 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
             <hr/>
             <div className="sample" style={{ backgroundColor: localBg, color: localFont }}>
                 <p>{text[settings.language].sample}</p>
-                <button
-                    onClick={applyTheme}
-                    style={{width: authState.status ? "25%" : "40%", backgroundColor: "transparent", border: `${localFont} 3px solid`}}
-                    title={text[settings.language].themeControls[0]}
-                >
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d={paths.apply} stroke={localFont} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </button>
-                <button
-                    onClick={() => constructor.current.close()}
-                    style={{width: authState.status ? "25%" : "40%", backgroundColor: "transparent", border: `${localFont} 3px solid`}}
-                    title={text[settings.language].themeControls[1]}
-                >
-                    <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><g id="work-case" fill={localFont} transform="translate(91.520000, 91.520000)"><polygon id="Close" points={paths.cancel} /></g></g></svg>
-                </button>
-                {authState.status && <button
-                    onClick={saveTheme}
-                    style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
-                    title={text[settings.language].themeControls[2]}
-                >
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d={paths.save} stroke={localFont} strokeWidth="2" strokeLinejoin="round"/></svg>
-                </button>}
+                <div>
+                    <button
+                        onClick={applyTheme}
+                        style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
+                        title={text[settings.language].themeControls[0]}
+                    >
+                        {loadApply ? <span className="loader" style={loaderStyles} />
+                        : <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d={paths.apply} stroke={localFont} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                    </button>
+                    <button
+                        onClick={() => constructor.current.close()}
+                        style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
+                        title={text[settings.language].themeControls[1]}
+                    >
+                        <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><g id="work-case" fill={localFont} transform="translate(91.520000, 91.520000)"><polygon id="Close" points={paths.cancel} /></g></g></svg>
+                    </button>
+                    <button
+                        onClick={saveTheme}
+                        style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
+                        title={text[settings.language].themeControls[2]}
+                    >
+                        {loadSave ? <span className="loader" style={loaderStyles} />
+                        : <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d={paths.save} stroke={localFont} strokeWidth="2" strokeLinejoin="round"/></svg>}
+                    </button>
+                </div>
             </div>
 
             <dialog
