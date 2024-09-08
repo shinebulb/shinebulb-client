@@ -126,7 +126,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                         value={password}
                         placeholder={text[settings.language].login[2]}
                     />
-                    <button type="submit" onClick={login}>{
+                    <button type="submit" onClick={login} disabled={loadLogIn}>{
                         loadLogIn ? <span className="loader" style={{ width: "1.6rem", height: "1.6rem" }} />
                         : text[settings.language].auth[0]
                     }</button>

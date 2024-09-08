@@ -117,6 +117,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                 <div>
                     <button
                         onClick={applyTheme}
+                        disabled={loadApply}
                         style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
                         title={text[settings.language].themeControls[0]}
                     >
@@ -132,6 +133,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                     </button>
                     <button
                         onClick={saveTheme}
+                        disabled={loadSave}
                         style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
                         title={text[settings.language].themeControls[2]}
                     >

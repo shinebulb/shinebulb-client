@@ -111,7 +111,7 @@ function Play({ bulb, settings, setSettings }) {
                 <img ref={bulb} src={`img/${settings.bulbStatus}.svg`} alt="the lightbulb" />
             </label>
             <div className="controls">
-                <button onClick={updateCount} id="switch">{
+                <button onClick={updateCount} disabled={loadSwitch} id="switch">{
                     loadSwitch ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
                     : text[settings.language].controls[0]
                 }</button>
@@ -119,7 +119,7 @@ function Play({ bulb, settings, setSettings }) {
             </div>
             <dialog ref={modal} className="confirm">
                 <p>{text[settings.language].confirm[0]}</p>
-                <button onClick={resetCount}>{
+                <button onClick={resetCount} disabled={loadReset}>{
                     loadReset ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
                     : text[settings.language].confirm[1]
                 }</button>

@@ -105,6 +105,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
                         border: `${font} 3px solid`
                     }}
                     onClick={applyTheme}
+                    disabled={loadApply}
                 >
                     {loadApply ? <span className="loader" style={loaderStyles} />
                     : <svg fill={font} version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xmlSpace="preserve"><path className="bentblocks_een" d={paths.paint}/></svg>}
@@ -122,13 +123,13 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
                 
                 <dialog ref={renameRef} className="confirm">
                     <input type="text" ref={inputRef} placeholder={text[settings.language].savedDialogs[0]}/>
-                    <button onClick={renameTheme}>{
+                    <button onClick={renameTheme} disabled={loadRename}>{
                         loadRename ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />
                         : text[settings.language].themeControls[0]
                     }</button>
                     <button onClick={() => renameRef.current.close()}>{text[settings.language].themeControls[1]}</button>
                 </dialog>
-                <dialog ref={deleteRef} className="confirm">
+                <dialog ref={deleteRef} disabled={loadDelete} className="confirm">
                     <p>{text[settings.language].savedDialogs[1]}</p>
                     <button onClick={deleteTheme}>{
                         loadDelete ? <span className="loader" style={{ width: "1rem", height: "1rem" }} />

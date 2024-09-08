@@ -84,7 +84,10 @@ function SignUp({ settings }) {
                             placeholder={text[settings.language].signup[4]}
                         />
                         <ErrorMessage name="password" component="span" />
-                        <button type="submit">{text[settings.language].auth[1]}</button>
+                        <button type="submit" disabled={loadSignUp}>{
+                            loadSignUp ? <span className="loader" style={{ width: "1.6rem", height: "1.6rem" }} />
+                            : text[settings.language].auth[1]
+                        }</button>
                     </Form>
                 </Formik>
             </>
