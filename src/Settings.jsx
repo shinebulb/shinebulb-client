@@ -72,7 +72,6 @@ function Settings({ settings, setSettings }) {
     }
 
     function languageChange(event) {
-        setLoadLang(true);
         const newLang = languages.indexOf(event.target.value);
         if (!authState.status) {
             localStorage.setItem("language", newLang);
@@ -81,6 +80,7 @@ function Settings({ settings, setSettings }) {
             );
         }
         else {
+            setLoadLang(true);
             axios.put(
                 "https://shinebulb-server-production-7e2b.up.railway.app/users/language",
                 { language: newLang, id: authState.id },
