@@ -24,8 +24,8 @@ function Play({ bulb, settings, setSettings }) {
     const modal = useRef(null);
 
     function updateCount() {
-        setLoadSwitch(true);
         if (authState.status) {
+            setLoadSwitch(true);
             axios.all([
                 axios.put(
                     "https://shinebulb-server-production-7e2b.up.railway.app/users/count",
@@ -60,8 +60,8 @@ function Play({ bulb, settings, setSettings }) {
     }
 
     function resetCount() {
-        setLoadReset(true);
         if (authState.status) {
+            setLoadReset(true);
             axios.all([
                 axios.put(
                     "https://shinebulb-server-production-7e2b.up.railway.app/users/count",
