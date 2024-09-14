@@ -628,6 +628,29 @@ a:hover {
     background-color: hsl(0, 0%, 0%, 0.25);
 }
 
+.theme .instructions {
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(200, 80%, 70%);
+    color: hsl(200, 80%, 15%);
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 0.5rem 0.8rem;
+    cursor: default;
+}
+
+.theme .instructions p {
+    text-align: left;
+    margin: 0;
+}
+
+.theme .instructions svg {
+    width: 4rem;
+    fill: hsl(200, 80%, 15%);
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
 .theme input {
     width: 10rem;
     height: 4rem;
@@ -1060,6 +1083,12 @@ hr {
     .options button {
         height: 2.3rem;
         font-size: 1.1rem;
+    }
+    .theme .instructions {
+        font-size: 0.8rem;
+    }
+    .theme .instructions svg {
+        width: 5rem;
     }
     .theme input {
         width: 6rem;

@@ -13,11 +13,13 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
     const [localBg, setLocalBg] = useState("#2e5a97");
     const [localFont, setLocalFont] = useState("#f1f1f1");
 
-    const [bgText, setBgText] = useState(localBg);
-    const [fontText, setFontText] = useState(localFont);
+    const [bgText, setBgText] = useState("#2e5a97");
+    const [fontText, setFontText] = useState("#f1f1f1");
 
     const [loadApply, setLoadApply] = useState(false);
     const [loadSave, setLoadSave] = useState(false);
+
+    const [themeInstructionsDisplay, setThemeInstructionsDisplay] = useState(localStorage.getItem("themeInstructionsDisplay") || "flex");
 
     const alertRef = useRef(null);
 
@@ -113,13 +115,18 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
 
     return (
         <dialog className="theme" ref={constructor}>
+            <div className="instructions" style={{display: themeInstructionsDisplay}}>
+                <p>{text[settings.language].themeInstructions}</p>
+                <svg onClick={() => {localStorage.setItem("themeInstructionsDisplay", "none"); setThemeInstructionsDisplay("none")}} viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd"><g id="work-case" transform="translate(91.520000, 91.520000)"><polygon id="Close" points={paths.cancel} /></g></g></svg>
+            </div>
+            <hr style={{display: themeInstructionsDisplay}}/>
             <div className="themeHeader">
                 <div>
                     <label>
                         {text[settings.language].customTheme[0]}<br />
                         <span>(
                             {text[settings.language].current}:
-                            <input type="text" value={`#${bgText.slice(1)}`} onChange={event => inputBg(event.target.value)} />
+                            <input type="text" value={`#${bgText?.slice(1)}`} onChange={event => inputBg(event.target.value)} />
                         )</span>
                     </label>
                     <input type="color" value={localBg} onChange={event => {
@@ -132,7 +139,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                         {text[settings.language].customTheme[1]}<br />
                         <span>(
                             {text[settings.language].current}:
-                            <input type="text" value={`#${fontText.slice(1)}`} onChange={event => inputFont(event.target.value)} />
+                            <input type="text" value={`#${fontText?.slice(1)}`} onChange={event => inputFont(event.target.value)} />
                         )</span>
                     </label>
                     <input type="color" value={localFont} onChange={event => {
