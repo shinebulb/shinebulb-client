@@ -327,6 +327,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .devpage a {
     font-weight: normal;
     text-decoration: underline;
@@ -335,8 +336,9 @@ body {
 .profile {
     display: flex;
     align-items: center;
-    padding: 1rem 2rem;
+    width: 480px;
     border-radius: 20px;
+    padding: 1rem 2rem;
 }
 
 .profile .play img {
@@ -1036,6 +1038,7 @@ hr {
     }
     .profile {
         flex-direction: column;
+        width: 220px;
     }
     .user-info {
         text-align: center;

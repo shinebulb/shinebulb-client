@@ -62,7 +62,7 @@ function Profile({ settings, bulb }) {
                             .toLowerCase()
                         }`}</h2>
                         <h2 id="counter" style={{color: userTheme[1][user.theme || 0]}}>
-                            <span style={{fontWeight: "normal"}}>bulb count: </span>
+                            <span style={{fontWeight: "normal"}}>{text[settings.language].bulbCount}: </span>
                             <span style={{fontStyle: "italic"}}>{user.bulbCount || 0}</span>
                         </h2>
                     </div>
