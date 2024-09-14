@@ -335,6 +335,12 @@ body {
 .profile {
     display: flex;
     align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+}
+
+.profile .play img {
+    margin-left: -2rem;
 }
 
 .user-info {
@@ -342,7 +348,6 @@ body {
 }
 
 .user-info h1 {
-    color: var(--font);
     font-size: 2.2rem;
     margin: 0 0 0.5rem 0;
 }
@@ -650,7 +655,6 @@ a:hover {
     justify-content: space-between;
     background-color: hsl(200, 60%, 70%);
     color: hsl(200, 60%, 5%);
-    font-size: 0.9rem;
     font-style: italic;
     padding: 0.5rem 0.8rem;
     cursor: default;
@@ -1039,6 +1043,7 @@ hr {
     .profile .play img {
         width: 220px;
         height: 220px;
+        margin: 0;
     }
     .user-info h1 {
         font-size: 1.8rem;
@@ -1123,9 +1128,6 @@ hr {
     }
     .theme .instructions {
         font-size: 0.8rem;
-    }
-    .theme .instructions svg {
-        width: 5rem;
     }
     .theme input {
         width: 6rem;
