@@ -631,6 +631,7 @@ a:hover {
 .theme input {
     width: 10rem;
     height: 4rem;
+    cursor: pointer;
 }
 
 .themeHeader div {
@@ -648,6 +649,20 @@ a:hover {
 
 .themeHeader span {
     font-size: 1.1rem;
+}
+
+.themeHeader span input {
+    font-family: "Roboto Slab";
+    width: 8ch;
+    height: auto;
+    background-color: var(--select-hover);
+    color: var(--font);
+    font-size: 1rem;
+    border: var(--font) 2px solid;
+    border-radius: 10px;
+    margin: 0 0.2rem 0 0.5rem;
+    padding: 0.2rem 0.3rem;
+    cursor: text;
 }
 
 .sample {
@@ -1058,6 +1073,13 @@ hr {
     }
     .themeHeader span {
         font-size: 0.95rem;
+    }
+    .themeHeader span input {
+        font-size: 0.9rem;
+        border: var(--border-thin);
+        border-radius: 8px;
+        margin: 0 0.1rem 0 0.4rem;
+        padding: 0.1rem 0.2rem;
     }
     .sample {
         padding: 20px 0 0;

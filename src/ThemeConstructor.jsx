@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { AuthContext } from './assets/AuthContext';
+import checkColor from './assets/checkColor';
 import axios from 'axios';
 import text from './assets/json/text.json';
 import paths from './assets/json/svg-paths.json';
@@ -11,6 +12,9 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
 
     const [localBg, setLocalBg] = useState("#2e5a97");
     const [localFont, setLocalFont] = useState("#f1f1f1");
+
+    const [bgText, setBgText] = useState(localBg);
+    const [fontText, setFontText] = useState(localFont);
 
     const [loadApply, setLoadApply] = useState(false);
     const [loadSave, setLoadSave] = useState(false);
@@ -33,12 +37,31 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
         ).then(response => {
             setLocalBg(response.data.lastBg);
             setLocalFont(response.data.lastFont);
+            setBgText(response.data.lastBg);
+            setFontText(response.data.lastFont);
         });
     }, []);
 
+    function inputBg(color) {
+        if (checkColor(color)) {
+            setLocalBg(color);
+        }
+        setBgText(color);
+    }
+
+    function inputFont(color) {
+        if (checkColor(color)) {
+            setLocalFont(color);
+        }
+        setFontText(color);
+    }
+
     function generateTheme() {
-        setLocalBg(`#${Math.random().toString(16).substring(2, 8)}`);
-        setLocalFont(`#${Math.random().toString(16).substring(2, 8)}`);
+        const colors = [`#${Math.random().toString(16).substring(2, 8)}`, `#${Math.random().toString(16).substring(2, 8)}`]
+        setLocalBg(colors[0]);
+        setLocalFont(colors[1]);
+        setBgText(colors[0]);
+        setFontText(colors[1]);
     }
 
     function applyTheme() {
@@ -94,16 +117,28 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                 <div>
                     <label>
                         {text[settings.language].customTheme[0]}<br />
-                        <span>({text[settings.language].current}: {localBg})</span>
+                        <span>(
+                            {text[settings.language].current}:
+                            <input type="text" value={`#${bgText.slice(1)}`} onChange={event => inputBg(event.target.value)} />
+                        )</span>
                     </label>
-                    <input type="color" value={localBg} onChange={event => setLocalBg(event.target.value)} />
+                    <input type="color" value={localBg} onChange={event => {
+                        setLocalBg(event.target.value);
+                        setBgText(event.target.value);
+                    }} />
                 </div>
                 <div>
                     <label>
                         {text[settings.language].customTheme[1]}<br />
-                        <span>({text[settings.language].current}: {localFont})</span>
+                        <span>(
+                            {text[settings.language].current}:
+                            <input type="text" value={`#${fontText.slice(1)}`} onChange={event => inputFont(event.target.value)} />
+                        )</span>
                     </label>
-                    <input type="color" value={localFont} onChange={event => setLocalFont(event.target.value)} />
+                    <input type="color" value={localFont} onChange={event => {
+                        setLocalFont(event.target.value);
+                        setFontText(event.target.value);
+                    }} />
                 </div>
             </div>
             <hr/>
