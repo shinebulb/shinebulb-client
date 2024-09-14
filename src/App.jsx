@@ -65,10 +65,7 @@ function App() {
                 setLoadApp(false);
                 themes[response.data.theme === null ? settings.theme : response.data.theme]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
-                return axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${response.data.id}`);
             }
-        }).then(response => {
-            if (response !== undefined) setSavedList(response.data);
         });
     }, []);
     

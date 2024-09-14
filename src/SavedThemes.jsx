@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { AuthContext } from './assets/AuthContext';
 import text from './assets/json/text.json';
 import { motion } from 'framer-motion';
@@ -13,6 +14,10 @@ function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
 
     useEffect(() => {
         document.title = text[settings.language].links[5];
+        axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${authState.id}`)
+        .then(response => {
+            if (response !== undefined) setSavedList(response.data);
+        });
     }, []);
 
     const navigate = useNavigate();
