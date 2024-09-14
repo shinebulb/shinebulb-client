@@ -53,7 +53,7 @@
         ],
         "version": "current version",
         "devSides": ["github repositories:", "and earlier", "client", "server"],
-        "themeInstructions": "to edit theme colors, click on one of the color boxes on the right or type in a hex value in the text field"
+        "themeInstructions": "HINT: now you can edit a color manually by clicking on its marked hex value!"
     },
 
     {
@@ -110,6 +110,6 @@
         ],
         "version": "текущая версия",
         "devSides": ["репозитории на github:", "и раньше", "клиент", "сервер"],
-        "themeInstructions": "отредактируйте цвета темы с помощью подборщика цвета справа или впишите hex-код в текстовое поле"
+        "themeInstructions": "ПОДСКАЗКА: теперь вы можете изменить цвет вручную, нажав на его hex-код!"
     }
 ]

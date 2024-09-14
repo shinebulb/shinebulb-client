@@ -16,6 +16,9 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
     const [bgText, setBgText] = useState("#2e5a97");
     const [fontText, setFontText] = useState("#f1f1f1");
 
+    const [editBgText, setEditBgText] = useState(false);
+    const [editFontText, setEditFontText] = useState(false);
+
     const [loadApply, setLoadApply] = useState(false);
     const [loadSave, setLoadSave] = useState(false);
 
@@ -125,8 +128,10 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                     <label>
                         {text[settings.language].customTheme[0]}<br />
                         <span>(
-                            {text[settings.language].current}:
+                            {text[settings.language].current}:&nbsp;
+                            {editBgText ?
                             <input type="text" value={`#${bgText?.slice(1)}`} onChange={event => inputBg(event.target.value)} />
+                            : <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => setEditBgText(true)}>{localBg}</span>}
                         )</span>
                     </label>
                     <input type="color" value={localBg} onChange={event => {
@@ -138,8 +143,10 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                     <label>
                         {text[settings.language].customTheme[1]}<br />
                         <span>(
-                            {text[settings.language].current}:
+                            {text[settings.language].current}:&nbsp;
+                            {editFontText ?
                             <input type="text" value={`#${fontText?.slice(1)}`} onChange={event => inputFont(event.target.value)} />
+                            : <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => setEditFontText(true)}>{localFont}</span>}
                         )</span>
                     </label>
                     <input type="color" value={localFont} onChange={event => {

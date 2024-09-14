@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import text from './assets/json/text.json';
+import on from './assets/svg/on.svg';
+import off from './assets/svg/off.svg';
 import { motion } from 'framer-motion';
 
-function Profile({ settings }) {
+function Profile({ settings, bulb }) {
     
     const navigate = useNavigate();
 
@@ -12,6 +14,8 @@ function Profile({ settings }) {
     
     const [loadUser, setLoadUser] = useState(false);
 
+    const { username } = useParams();
+    
     useEffect(() => {
         setLoadUser(true);
         document.title = username;
@@ -20,9 +24,7 @@ function Profile({ settings }) {
             setUser(response.data);
             setLoadUser(false);
         });
-    }, []);
-
-    const { username } = useParams();
+    }, [username]);
 
     const locales = ["en-us", "ru-ru"];
     
@@ -38,17 +40,26 @@ function Profile({ settings }) {
             : <>{
                 user === null ? navigate("/page-not-found")
                 : <>
-                    <h2>{username}</h2>
-                    <h2>{
-                        `${text[settings.language].joined} ${
-                        new Date(user.createdAt)
-                        .toLocaleDateString(locales[settings.language], {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric"
-                        })
-                        .toLowerCase()
-                    }`}</h2>
+                    <div className="play">
+                        <img ref={bulb} className={user.bulbStatus} src={user.bulbStatus == "on" ? on : off} />
+                    </div>
+                    <div className="user-info">
+                        <h1>{username}</h1>
+                        <h2 className="joined">{
+                            `${text[settings.language].joined} ${
+                            new Date(user.createdAt)
+                            .toLocaleDateString(locales[settings.language], {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric"
+                            })
+                            .toLowerCase()
+                        }`}</h2>
+                        <h2 id="counter">
+                            <span style={{fontWeight: "normal"}}>bulb count: </span>
+                            <span style={{fontStyle: "italic"}}>{user.bulbCount || 0}</span>
+                        </h2>
+                    </div>
                 </>
             }</>}
         </motion.div>

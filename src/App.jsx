@@ -115,7 +115,7 @@ function App() {
                         <Route path="/saved" element={<SavedThemes settings={settings} setSettings={setSettings} savedList={savedList} setSavedList={setSavedList} />} />
                         <Route path="/login" element={<LogIn bulb={bulb} settings={settings} setSettings={setSettings} setSavedList={setSavedList} />} />
                         <Route path="/signup" element={<SignUp settings={settings} />} />
-                        <Route path="/user/:username" element={<Profile settings={settings} />} />
+                        <Route path="/user/:username" element={<Profile settings={settings} bulb={bulb} />} />
                         <Route path="*" element={<NoPage settings={settings} />} />
                     </Routes>
                 </>}
