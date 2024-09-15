@@ -42,7 +42,7 @@ function Profile({ settings, bulb }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            {loadUser ? <span className="loader" style={{width: "5rem", height: "5rem", borderWidth: "7px"}} />
+            {loadUser ? <span className="loader" style={{width: "5rem", height: "5rem", borderWidth: "7px", margin: "auto"}} />
             : <>{
                 user === null ? navigate("/page-not-found")
                 : <>
