@@ -328,7 +328,7 @@ body {
     flex-direction: column;
 }
 
-.devpage a {
+.devpage-link {
     font-weight: normal;
     text-decoration: underline;
 }
