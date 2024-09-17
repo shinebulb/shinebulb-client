@@ -399,7 +399,19 @@ body {
 #counter {
     margin: 1.2rem 0;
 }
-  
+
+.about-content {
+    background-color: var(--modal-bg);
+    border: var(--border-thick);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.about-content p {
+    font-weight: normal;
+    font-style: italic;
+}
+
 h2 {
     font-size: 1.5rem;
     color: var(--font);
@@ -1068,6 +1080,9 @@ hr {
         width: 90%;
         text-align: center;
         margin: auto;
+    }
+    .about-content {
+        padding: 1rem;
     }
     .about-content .p1 {
         font-size: 1rem;
