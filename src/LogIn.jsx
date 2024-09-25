@@ -98,7 +98,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            {!authState.status ?
+            <div style={{height: "3rem"}}/>{!authState.status ?
             <>
                 <h2 style={{width: "80vw"}}>{text[settings.language].login[0]}</h2>
                 <div className="login-warning" style={{display: warningDisplay}}>

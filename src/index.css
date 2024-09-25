@@ -249,13 +249,15 @@ body {
 }
 
 .login-warning div {
+    display: flex;
+    align-items: center;
     width: 100%;
 }
 
 .login-warning button {
     font-family: "Roboto Slab";
     width: 48%;
-    height: 2.7rem;
+    min-height: 2.7rem;
     background-color: var(--light-yellow);
     color: var(--dark-yellow);
     font-size: 1.1rem;
