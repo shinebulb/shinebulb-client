@@ -16,11 +16,19 @@ function Settings({ settings, setSettings }) {
 
     const [loadLang, setLoadLang] = useState(false);
     const [loadTheme, setLoadTheme] = useState(false);
+    
+    const [width, setWidth] = useState(window.innerWidth);
+    
+    let constructorClosed = true;
 
     const navigate = useNavigate();
 
     useEffect(() => {
         document.title = text[settings.language].links[1];
+        document.addEventListener("keydown", event => openConstructor(event.key.toLowerCase()), true);
+        window.addEventListener("resize", () => setWidth(window.innerWidth));
+
+        return () =>  window.removeEventListener("resize", () => setWidth(window.innerWidth))
     }, []);
 
     const constructorRef = useRef(null);
@@ -33,6 +41,19 @@ function Settings({ settings, setSettings }) {
         borderBottomColor: "transparent",
         marginRight: "0.7rem"
     };
+
+    function openConstructor(key) {
+        if (key == "c" || key == "с") {
+            if (constructorClosed) {
+                constructorRef.current.showModal();
+                constructorClosed = false;
+            }
+            else {
+                constructorRef.current.close();
+                constructorClosed = true;
+            }
+        }
+    }
 
     function themeChange(event) {
         const mode = modes.indexOf(event.target.value);
@@ -113,7 +134,7 @@ function Settings({ settings, setSettings }) {
                         <option value="light">{text[settings.language].mode[1]}</option>
                         <option value="dark">{text[settings.language].mode[2]}</option>
                         {authState.status && <>
-                            <option value="custom">{text[settings.language].mode[3]}</option>
+                            <option value="custom">{text[settings.language].mode[3]}{width >= 600 && " (c)"}</option>
                             <option value="more...">{text[settings.language].mode[4]}</option>
                         </>}
                     </select>
@@ -123,6 +144,7 @@ function Settings({ settings, setSettings }) {
                 constructor={constructorRef}
                 settings={settings}
                 setSettings={setSettings}
+                width={width}
             />
             <More more={moreRef} settings={settings} />
             <div style={{ height: "3rem" }} />

@@ -6,7 +6,7 @@ import text from './assets/json/text.json';
 import paths from './assets/json/svg-paths.json';
 import custom from './assets/json/custom.json';
 
-function ThemeConstructor({ constructor, settings, setSettings }) {
+function ThemeConstructor({ constructor, settings, setSettings, width }) {
 
     const [saveStatus, setSaveStatus] = useState(0);
 
@@ -176,7 +176,7 @@ function ThemeConstructor({ constructor, settings, setSettings }) {
                     <button
                         onClick={() => constructor.current.close()}
                         style={{backgroundColor: "transparent", border: `${localFont} 3px solid`}}
-                        title={text[settings.language].themeControls[1]}
+                        title={text[settings.language].themeControls[1] + (width >= 600 ? " (c)" : "")}
                     >
                         <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><g id="work-case" fill={localFont} transform="translate(91.520000, 91.520000)"><polygon id="Close" points={paths.cancel} /></g></g></svg>
                     </button>
