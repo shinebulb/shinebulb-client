@@ -36,6 +36,9 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     }
 
     useEffect(() => {
+        document.addEventListener("keydown", event => {
+            if ((event.key == "r") || (event.key == "к")) generateTheme();
+        }, true);
         axios.get(
             "https://shinebulb-server-production-7e2b.up.railway.app/users/changeTheme",
             { headers: { accessToken: localStorage.getItem("accessToken") } }
@@ -158,7 +161,7 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
             <hr/>
             <button className="modal-options" onClick={generateTheme}>
                 <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><path d={paths.generate}/></svg>
-                {text[settings.language].generateRandom}
+                {text[settings.language].generateRandom} (r)
             </button>
             <hr/>
             <div className="sample" style={{ backgroundColor: localBg, color: localFont }}>
