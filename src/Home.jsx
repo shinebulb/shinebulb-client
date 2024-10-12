@@ -20,7 +20,7 @@ function Home({ settings }) {
             transition={{duration: 0.5}}
         >
             <div className="header">
-                <p className="p2">shineb</p><img src="img/u-bulb.svg"/><p className="p2">lb</p>
+                <p className="p2">shineb</p><img src="img/u-bulb.png"/><p className="p2">lb</p>
             </div>
             <div className="links">
                 <a onClick={() => navigate("/play")}>{text[settings.language].links[0]}</a>
