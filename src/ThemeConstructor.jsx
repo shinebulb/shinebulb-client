@@ -16,8 +16,6 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     const [bgText, setBgText] = useState("#2e5a97");
     const [fontText, setFontText] = useState("#f1f1f1");
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
     const [editBgText, setEditBgText] = useState(false);
     const [editFontText, setEditFontText] = useState(false);
 
@@ -38,7 +36,6 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     }
 
     useEffect(() => {
-        window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
         document.addEventListener("keydown", event => {
             if ((event.key == "r") || (event.key == "к")) generateTheme();
         }, true);
@@ -51,7 +48,6 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
             setBgText(response.data.lastBg);
             setFontText(response.data.lastFont);
         });
-        return () =>  window.removeEventListener("resize", () => setWindowWidth(window.innerWidth))
     }, []);
 
     function inputBg(color) {
@@ -165,7 +161,7 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
             <hr/>
             <button className="modal-options" onClick={generateTheme}>
                 <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><path d={paths.generate}/></svg>
-                {text[settings.language].generateRandom}{width >= 600 && " (r)"}
+                {text[settings.language].generateRandom + (width >= 600 ? " (r)" : "")}
             </button>
             <hr/>
             <div className="sample" style={{ backgroundColor: localBg, color: localFont }}>
