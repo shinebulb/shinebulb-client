@@ -54,7 +54,12 @@
         "version": "current version",
         "devSides": ["github repositories:", "and earlier", "client", "server"],
         "themeInstructions": "HINT: you can edit a color manually by clicking on its marked hex value!",
-        "bulbCount": "bulb count"
+        "bulbCount": "bulb count",
+        "copyColors": "copy user's theme colors",
+        "pickCopyColors": [
+            "choose the color to copy", "background", "strokes"
+        ],
+        "close": "close"
     },
 
     {
@@ -112,6 +117,11 @@
         "version": "текущая версия",
         "devSides": ["репозитории на github:", "и раньше", "клиент", "сервер"],
         "themeInstructions": "ПОДСКАЗКА: вы можете изменить цвет вручную, нажав на его hex-код!",
-        "bulbCount": "счёт лампочки"
+        "bulbCount": "счёт лампочки",
+        "copyColors": "скопировать цвета темы пользователя",
+        "pickCopyColors": [
+            "выберите цвет темы", "фон", "линии"
+        ],
+        "close": "закрыть"
     }
 ]
