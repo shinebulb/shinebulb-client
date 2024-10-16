@@ -460,15 +460,14 @@ body {
 }
 
 .play img {
-    transition: transform 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: rotate(-5deg);
     width: 256px;
     height: 256px;
-    transition: filter 0.5s ease;
 }
 
 .play img:hover {
-    filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.4));
 }
   
 .play img.on {
