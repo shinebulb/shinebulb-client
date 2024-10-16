@@ -374,15 +374,15 @@ body {
 
 .copy-modal {
     background-color: var(--modal-bg);
-    width: 300px;
+    width: 400px;
     border: var(--border-thick);
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 0;
 }
 
 .copy-modal h2 {
     font-style: italic;
-    margin: 0.7rem;
+    margin: 0.8rem;
     cursor: default;
 }
 
@@ -399,28 +399,28 @@ body {
 }
 
 .color-display {
-    width: 4.5rem;
-    height: 4.5em;
+    width: 5rem;
+    height: 5em;
     box-shadow: 2px 0 0 0 var(--button-font);
-    margin-right: 0.5rem;
+    margin-right: 0.9rem;
 }
 
 .color-display span {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .copy-modal p {
     color: var(--button-font);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-align: left;
     margin: 0;
 }
 
 .close-copy {
     color: var(--font);
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-style: italic;
-    margin: 0.3rem;
+    margin: 0.5rem;
     cursor: pointer;
 }
 
@@ -1132,6 +1132,24 @@ hr {
         font-weight: normal;
         font-style: italic;
         margin: 0 0 1.8rem 0;
+    }
+    .copy-modal {
+        width: 300px;
+        border-radius: 15px;
+    }
+    .copy-modal h2 {
+        margin: 0.7rem;
+    }
+    .color-display {
+        width: 4.5rem;
+        height: 4.5em;
+        margin-right: 0.5rem;
+    }
+    .color-display span {
+        font-size: 3rem;
+    }
+    .copy-modal p {
+        font-size: 1.2rem;
     }
     .container {
         width: 80vw;
