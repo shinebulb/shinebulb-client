@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
+import paths from './assets/json/svg-paths.json';
 import text from './assets/json/text.json';
 import { motion } from 'framer-motion';
 
@@ -11,6 +12,8 @@ function Play({ bulb, settings, setSettings }) {
 
     const [loadSwitch, setLoadSwitch] = useState(false);
     const [loadReset, setLoadReset] = useState(false);
+
+    const [bulbMuted, setBulbMuted] = useState(false);
 
     useEffect(() => {
         document.title = text[settings.language].links[0].toLowerCase();
@@ -43,7 +46,7 @@ function Play({ bulb, settings, setSettings }) {
                     bulbCount: count.data,
                     bulbStatus: status.data
                 });
-                new Audio(`audio/${status.data}.mp3`).play();
+                if (!bulbMuted) new Audio(`audio/${status.data}.mp3`).play();
                 bulb.current.classList.toggle("on");
                 setLoadSwitch(false);
             }));
@@ -54,7 +57,7 @@ function Play({ bulb, settings, setSettings }) {
                 bulbCount: settings.bulbStatus === "off" ? settings.bulbCount + 1 : settings.bulbCount,
                 bulbStatus: settings.bulbStatus === "off" ? "on" : "off"
             });
-            new Audio(`audio/${settings.bulbStatus === "off" ? "on" : "off"}.mp3`).play();
+            if (!bulbMuted) new Audio(`audio/${settings.bulbStatus === "off" ? "on" : "off"}.mp3`).play();
             bulb.current.classList.toggle("on");
         }
     }
@@ -79,7 +82,7 @@ function Play({ bulb, settings, setSettings }) {
                     bulbCount: count.data,
                     bulbStatus: status.data
                 });
-                new Audio("audio/off.mp3").play();
+                if (!bulbMuted) new Audio("audio/off.mp3").play();
                 bulb.current.classList.remove("on");
                 modal.current.close();
                 setLoadReset(false);
@@ -91,7 +94,7 @@ function Play({ bulb, settings, setSettings }) {
                 bulbCount: 0,
                 bulbStatus: "off"
             });
-            new Audio(`audio/off.mp3`).play();
+            if (!bulbMuted) new Audio(`audio/off.mp3`).play();
             bulb.current.classList.remove("on");
             modal.current.close();
         }
@@ -105,7 +108,12 @@ function Play({ bulb, settings, setSettings }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <h2>{text[settings.language].headings[0]}</h2>
+            <div className="play-heading">
+                <svg viewBox="-0.5 0 25 25" fill="none" />
+                <h2>{text[settings.language].headings[0]}</h2>
+                {bulbMuted ? <svg onClick={() => setBulbMuted(false)} viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><title>{text[settings.language].bulbMuteUnmute[1]}</title><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/><g id="SVGRepo_iconCarrier"><path d={paths.soundOff[0]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d={paths.soundOff[1]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d={paths.soundOff[2]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
+                : <svg onClick={() => setBulbMuted(true)} viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><title>{text[settings.language].bulbMuteUnmute[0]}</title><g id="SVGRepo_bgCarrier" strokeWidth="0"/><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/><g id="SVGRepo_iconCarrier"><path d={paths.soundOn[0]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d={paths.soundOn[1]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d={paths.soundOn[2]} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></g></svg>}
+            </div>
             <p className="p1" id="text">{text[settings.language].text[bulbStates.indexOf(settings.bulbStatus)]}</p>
             <label htmlFor="switch">
                 <img ref={bulb} src={`img/${settings.bulbStatus}.svg`} alt="the lightbulb" />

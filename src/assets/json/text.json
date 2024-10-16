@@ -59,7 +59,10 @@
         "pickCopyColors": [
             "choose the color to copy", "background", "strokes"
         ],
-        "close": "close"
+        "close": "close",
+        "bulbMuteUnmute": [
+            "mute bulb", "unmute bulb"
+        ]
     },
 
     {
@@ -122,6 +125,9 @@
         "pickCopyColors": [
             "выберите цвет темы", "фон", "линии"
         ],
-        "close": "закрыть"
+        "close": "закрыть",
+        "bulbMuteUnmute": [
+            "выключить звуки лампочки", "включить звуки лампочки"
+        ]
     }
 ]
