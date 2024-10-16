@@ -464,7 +464,7 @@ body {
     transform: rotate(-5deg);
     width: 256px;
     height: 256px;
-    transition: all 0.5s ease;
+    transition: filter 0.5s ease;
 }
 
 .play img:hover {
