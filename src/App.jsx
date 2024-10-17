@@ -30,7 +30,7 @@ function App() {
 
     const [loadApp, setLoadApp] = useState(true);
 
-    useEffect(() => {
+    /* useEffect(() => {
         themes[parseInt(localStorage.getItem("theme")) || 0]();
         let id = 0;
         axios.get(
@@ -67,7 +67,7 @@ function App() {
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
             }
         });
-    }, []);
+    }, []); */
     
     const bulb = useRef(null);
 
@@ -89,9 +89,10 @@ function App() {
     return (
         <AuthContext.Provider value={{ authState, setAuthState }}>
             <BrowserRouter>
-                {loadApp ? <span className="app-loader" />
-                : <>
-                    <div className="navbar">
+                {/*loadApp ? <span className="app-loader" />
+                :*/
+                <>
+                    {/* <div className="navbar">
                     <div className="navbar-links">
                         <Link to="/" style={{ marginLeft: "calc(var(--navbar-margin) * 2)" }}>{text[settings.language || 0 || 0].home}</Link>
                         {authState.status && <Link to={`/user/${authState.username}`} style={{ fontStyle: "italic", fontWeight: "normal" }}>{authState.username}</Link>}
@@ -104,10 +105,10 @@ function App() {
                         }</div>
                     </div>
                     <hr />
-                    </div>
+                    </div> */}
                     <Routes>
                         <Route index element={<Home settings={settings} />} />
-                        <Route path="/play" element={<Play bulb={bulb} settings={settings} setSettings={setSettings} />} />
+                        {/* <Route path="/play" element={<Play bulb={bulb} settings={settings} setSettings={setSettings} />} />
                         <Route path="/settings" element={<Settings settings={settings} setSettings={setSettings} />} />
                         <Route path="/about" element={<About settings={settings} />} />
                         <Route path="/support" element={<Support settings={settings} />} />
@@ -115,7 +116,7 @@ function App() {
                         <Route path="/saved" element={<SavedThemes settings={settings} setSettings={setSettings} savedList={savedList} setSavedList={setSavedList} />} />
                         <Route path="/login" element={<LogIn bulb={bulb} settings={settings} setSettings={setSettings} setSavedList={setSavedList} />} />
                         <Route path="/signup" element={<SignUp settings={settings} />} />
-                        <Route path="/user/:username" element={<Profile settings={settings} bulb={bulb} />} />
+                        <Route path="/user/:username" element={<Profile settings={settings} bulb={bulb} />} /> */}
                         <Route path="*" element={<NoPage settings={settings} />} />
                     </Routes>
                 </>}
