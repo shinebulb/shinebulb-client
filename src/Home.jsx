@@ -8,7 +8,8 @@ function Home({ settings }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = "shinebulb"
+        navigate("/server-down");
+        document.title = "shinebulb";
     }, []);
 
     return (
