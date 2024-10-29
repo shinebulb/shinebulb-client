@@ -133,7 +133,7 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: rgb(23, 23, 23);
+    background-color: var(--bg);
 }
 
 .theme-transition {

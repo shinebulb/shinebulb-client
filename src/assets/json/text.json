@@ -62,8 +62,7 @@
         "close": "close",
         "bulbMuteUnmute": [
             "mute bulb", "unmute bulb"
-        ],
-        "serverDown": "it looks like our server is down! we're currently addressing the issue!"
+        ]
     },
 
     {
@@ -128,8 +127,7 @@
         ],
         "close": "закрыть",
         "bulbMuteUnmute": [
-            "выключить звук", "включить звук"
-        ],
-        "serverDown": "похоже, пропало соединение с сервером! мы уже работаем над проблемой!"
+            "выключить звуки лампочки", "включить звуки лампочки"
+        ]
     }
 ]
