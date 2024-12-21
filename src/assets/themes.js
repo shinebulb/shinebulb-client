@@ -18,7 +18,7 @@ const darkTheme = () => {
 
 const customTheme = () => {
     axios.get(
-        "https://shinebulb-server-production-7e2b.up.railway.app/users/changeTheme",
+        `${import.meta.env.REACT_APP_API_KEY}/users/changeTheme`,
         { headers: { accessToken: localStorage.getItem("accessToken") } }
     ).then(response => {
 

@@ -42,7 +42,7 @@ function SignUp({ settings }) {
 
     function createUser(data) {
         setLoadSignUp(true);
-        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users", data)
+        axios.post(`${import.meta.env.REACT_APP_API_KEY}/users`, data)
         .then(() => {
             navigate("/login");
             setLoadSignUp(false);

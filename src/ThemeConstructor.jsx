@@ -40,7 +40,7 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
             if ((event.key == "r") || (event.key == "к")) generateTheme();
         }, true);
         axios.get(
-            "https://shinebulb-server-production-7e2b.up.railway.app/users/changeTheme",
+            `${import.meta.env.REACT_APP_API_KEY}/users/changeTheme`,
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
             setLocalBg(response.data.lastBg);
@@ -75,12 +75,12 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     function applyTheme() {
         setLoadApply(true);
         axios.put(
-            "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
+            `${import.meta.env.REACT_APP_API_KEY}/users/theme`,
             { theme: 3, id: authState.id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
             return axios.put(
-                "https://shinebulb-server-production-7e2b.up.railway.app/users/lastTheme",
+                `${import.meta.env.REACT_APP_API_KEY}/users/lastTheme`,
                 { lastBg: localBg, lastFont: localFont, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             );
@@ -108,7 +108,7 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     function saveTheme() {
         setLoadSave(true);
         axios.post(
-            "https://shinebulb-server-production-7e2b.up.railway.app/savedthemes",
+            `${import.meta.env.REACT_APP_API_KEY}/savedthemes`,
             { bg: localBg, font: localFont },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {

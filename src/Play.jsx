@@ -31,12 +31,12 @@ function Play({ bulb, settings, setSettings }) {
             setLoadSwitch(true);
             axios.all([
                 axios.put(
-                    "https://shinebulb-server-production-7e2b.up.railway.app/users/count",
+                    `${import.meta.env.REACT_APP_API_KEY}/users/count`,
                     { count: settings.bulbCount + Number(!bulbStates.indexOf(settings.bulbStatus)), id: authState.id },
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 ),
                 axios.put(
-                    "https://shinebulb-server-production-7e2b.up.railway.app/users/bulb",
+                    `${import.meta.env.REACT_APP_API_KEY}/users/bulb`,
                     { status: Number(!bulbStates.indexOf(settings.bulbStatus)) ? "on" : "off", id: authState.id },
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 )
@@ -67,12 +67,12 @@ function Play({ bulb, settings, setSettings }) {
             setLoadReset(true);
             axios.all([
                 axios.put(
-                    "https://shinebulb-server-production-7e2b.up.railway.app/users/count",
+                    `${import.meta.env.REACT_APP_API_KEY}/users/count`,
                     { count: 0, id: authState.id },
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 ),
                 axios.put(
-                    "https://shinebulb-server-production-7e2b.up.railway.app/users/bulb",
+                    `${import.meta.env.REACT_APP_API_KEY}/users/bulb`,
                     { status: "off", id: authState.id },
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 )

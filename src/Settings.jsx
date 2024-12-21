@@ -70,7 +70,7 @@ function Settings({ settings, setSettings }) {
             else {
                 setLoadTheme(true);
                 axios.put(
-                    "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
+                    `${import.meta.env.REACT_APP_API_KEY}/users/theme`,
                     { theme: mode, id: authState.id },
                     { headers: { accessToken: localStorage.getItem("accessToken") } }
                 ).then(response => {
@@ -103,7 +103,7 @@ function Settings({ settings, setSettings }) {
         else {
             setLoadLang(true);
             axios.put(
-                "https://shinebulb-server-production-7e2b.up.railway.app/users/language",
+                `${import.meta.env.REACT_APP_API_KEY}/users/language`,
                 { language: newLang, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             ).then(response => {
