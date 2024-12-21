@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { AuthContext } from './assets/AuthContext';
@@ -23,15 +23,15 @@ function App() {
     const [settings, setSettings] = useState({
         bulbCount: 0,
         bulbStatus: "off",
-        language: 0,
-        theme: 0
+        language: localStorage.getItem("language") === null ? defaultLang() : localStorage.getItem("language"),
+        theme: parseInt(localStorage.getItem("theme")) || 0
     });
     const [savedList, setSavedList] = useState([]);
 
     const [loadApp, setLoadApp] = useState(true);
 
     useEffect(() => {
-        themes[settings.theme || 0]();
+        themes[parseInt(localStorage.getItem("theme")) || 0]();
         let id = 0;
         axios.get(
             `${import.meta.env.REACT_APP_API_KEY}/users/auth`,
@@ -89,8 +89,8 @@ function App() {
     return (
         <AuthContext.Provider value={{ authState, setAuthState }}>
             <BrowserRouter>
-                {loadApp ? <span className="app-loader" /> :
-                <>
+                {loadApp ? <span className="app-loader" />
+                : <>
                     <div className="navbar">
                     <div className="navbar-links">
                         <Link to="/" style={{ marginLeft: "calc(var(--navbar-margin) * 2)" }}>{text[settings.language || 0 || 0].home}</Link>
@@ -118,8 +118,7 @@ function App() {
                         <Route path="/user/:username" element={<Profile settings={settings} bulb={bulb} />} />
                         <Route path="*" element={<NoPage settings={settings} />} />
                     </Routes>
-                </>
-                }
+                </>}
             </BrowserRouter>
         </AuthContext.Provider>
     )
