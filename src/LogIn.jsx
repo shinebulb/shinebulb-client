@@ -39,7 +39,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
     function login() {
         let id = 0;
         setLoadLogIn(true);
-        axios.post(`${import.meta.env.REACT_APP_API_KEY}/users/login`, {
+        axios.post(`${import.meta.env.VITE_API_KEY}/users/login`, {
             username: username,
             password: password
         })
@@ -60,7 +60,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 navigate("/");
                 id = response.data.id;
                 return axios.get(
-                    `${import.meta.env.REACT_APP_API_KEY}/users/settings/${id}`,
+                    `${import.meta.env.VITE_API_KEY}/users/settings/${id}`,
                     { headers: { accessToken: response.data.token } }
                 );
             }
@@ -74,7 +74,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 });
                 themes[response.data.theme === null ? settings.theme : response.data.theme]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
-                return axios.get(`${import.meta.env.REACT_APP_API_KEY}/savedthemes/byUser/${response.data.id}`);
+                return axios.get(`${import.meta.env.VITE_API_KEY}/savedthemes/byUser/${response.data.id}`);
             }
             else {
                 themes[parseInt(localStorage.getItem("theme")) || 0]();

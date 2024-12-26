@@ -14,7 +14,7 @@ function SavedThemes({ settings, setSettings, savedList, setSavedList }) {
 
     useEffect(() => {
         document.title = text[settings.language].links[5];
-        axios.get(`${import.meta.env.REACT_APP_API_KEY}/savedthemes/byUser/${authState.id}`)
+        axios.get(`${import.meta.env.VITE_API_KEY}/savedthemes/byUser/${authState.id}`)
         .then(response => {
             if (response !== undefined) setSavedList(response.data);
         });

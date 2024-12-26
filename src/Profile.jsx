@@ -25,7 +25,7 @@ function Profile({ settings, bulb }) {
     useEffect(() => {
         setLoadUser(true);
         document.title = username;
-        axios.get(`${import.meta.env.REACT_APP_API_KEY}/users/userinfo/${username}`)
+        axios.get(`${import.meta.env.VITE_API_KEY}/users/userinfo/${username}`)
         .then(response => {
             setUser(response.data);
             setLoadUser(false);

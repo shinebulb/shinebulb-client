@@ -34,7 +34,7 @@ function App() {
         themes[parseInt(localStorage.getItem("theme")) || 0]();
         let id = 0;
         axios.get(
-            `${import.meta.env.REACT_APP_API_KEY}/users/auth`,
+            `${import.meta.env.VITE_API_KEY}/users/auth`,
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
             setAuthState(response.data.error ?
@@ -51,7 +51,7 @@ function App() {
                 setLoadApp(false);
             }
             return axios.get(
-                `${import.meta.env.REACT_APP_API_KEY}/users/settings/${id}`,
+                `${import.meta.env.VITE_API_KEY}/users/settings/${id}`,
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             );
         }).then(response => {

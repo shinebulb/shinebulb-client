@@ -18,7 +18,7 @@ const darkTheme = () => {
 
 const customTheme = () => {
     axios.get(
-        `${import.meta.env.REACT_APP_API_KEY}/users/changeTheme`,
+        `${import.meta.env.VITE_API_KEY}/users/changeTheme`,
         { headers: { accessToken: localStorage.getItem("accessToken") } }
     ).then(response => {
 

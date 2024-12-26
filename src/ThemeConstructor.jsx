@@ -40,13 +40,13 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
             if ((event.key == "r") || (event.key == "к")) generateTheme();
         }, true);
         axios.get(
-            `${import.meta.env.REACT_APP_API_KEY}/users/changeTheme`,
+            `${import.meta.env.VITE_API_KEY}/users/changeTheme`,
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
-            setLocalBg(response.data.lastBg);
-            setLocalFont(response.data.lastFont);
-            setBgText(response.data.lastBg);
-            setFontText(response.data.lastFont);
+            setLocalBg(response.data.lastBg || "#2e5a97");
+            setLocalFont(response.data.lastFont || "#f1f1f1");
+            setBgText(response.data.lastBg || "#2e5a97");
+            setFontText(response.data.lastFont || "#f1f1f1");
         });
     }, []);
 
@@ -75,12 +75,12 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     function applyTheme() {
         setLoadApply(true);
         axios.put(
-            `${import.meta.env.REACT_APP_API_KEY}/users/theme`,
+            `${import.meta.env.VITE_API_KEY}/users/theme`,
             { theme: 3, id: authState.id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
             return axios.put(
-                `${import.meta.env.REACT_APP_API_KEY}/users/lastTheme`,
+                `${import.meta.env.VITE_API_KEY}/users/lastTheme`,
                 { lastBg: localBg, lastFont: localFont, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             );
@@ -108,7 +108,7 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     function saveTheme() {
         setLoadSave(true);
         axios.post(
-            `${import.meta.env.REACT_APP_API_KEY}/savedthemes`,
+            `${import.meta.env.VITE_API_KEY}/savedthemes`,
             { bg: localBg, font: localFont },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
