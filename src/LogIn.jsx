@@ -98,8 +98,9 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            <div style={{height: "3rem"}}/>{!authState.status ?
+            {!authState.status ?
             <>
+                <div style={{height: "3rem"}}/>
                 <h2 style={{width: "80vw"}}>{text[settings.language].login[0]}</h2>
                 <div className="login-warning" style={{display: warningDisplay}}>
                     <p>{text[settings.language].logInWarning[0]}</p>
@@ -149,9 +150,10 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                     </div>
                 </dialog>
             </>
-            : <>
-                <h2>{text[settings.language].authErrors[4]}</h2>
-            </>}
+            : <div className="loggedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d={paths.loggedIn}/></svg>
+                <h2 style={{width: "100%"}}>{text[settings.language].authErrors[4]}</h2>
+            </div>}
         </motion.div>
     )
 }

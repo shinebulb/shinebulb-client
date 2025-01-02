@@ -165,6 +165,12 @@ body {
     margin: auto;
 }
 
+.loggedIn svg {
+    fill: var(--font);
+    height: 250px;
+    margin-bottom: 1rem;
+}
+
 .signup-form, .login-form {
     display: flex;
     flex-direction: column;

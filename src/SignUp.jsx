@@ -59,6 +59,7 @@ function SignUp({ settings }) {
         >
             {!authState.status ?
             <>
+                <div style={{height: "3rem"}}/>
                 <h2 style={{width: "80vw"}} >{text[settings.language].signup[0]}</h2>
                 <Formik
                     initialValues={initialValues}
@@ -91,7 +92,10 @@ function SignUp({ settings }) {
                     </Form>
                 </Formik>
             </>
-            : <h2>{text[settings.language].authErrors[5]}</h2>}
+            : <div className="loggedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d={paths.loggedIn}/></svg>
+                <h2 style={{width: "100%"}}>{text[settings.language].authErrors[5]}</h2>
+            </div>}
         </motion.div>
     )
 }

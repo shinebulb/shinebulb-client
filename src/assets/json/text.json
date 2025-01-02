@@ -45,7 +45,8 @@
         "error": "error",
         "authNotifications": [
             "unexpected error occurred!",
-            "wrong username or password!"
+            "user was not found!",
+            "wrong password!"
         ],
         "logInWarning": [
             "warning! make sure to carefully check your username and password before logging in. inputting an incorrect combination may cause unexpected errors!",
@@ -112,7 +113,8 @@
         "error": "ошибка",
         "authNotifications": [
             "произошла неожиданная ошибка!",
-            "неверное имя пользователя или пароль!"
+            "пользователь не найден!",
+            "неправильный пароль!"
         ],
         "logInWarning": [
             "предупреждение! внимательно проверьте имя пользователя и пароль перед входом в аккаунт. введение неверной комбинации может привести к неожиданным ошибкам!",
