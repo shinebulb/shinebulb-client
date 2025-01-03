@@ -64,8 +64,10 @@
         "bulbMuteUnmute": [
             "mute bulb", "unmute bulb"
         ],
-        "changePassword": "change password",
-        "serverDown": "it looks like our server is down! we're currently addressing the issue!"
+        "changePassword": [
+            "change password", "change your password!", "old password",
+            "enter old password...", "new password", "enter new password..."
+        ]
     },
 
     {
@@ -133,7 +135,9 @@
         "bulbMuteUnmute": [
             "выключить звуки лампочки", "включить звуки лампочки"
         ],
-        "changePassword": "сменить пароль",
-        "serverDown": "похоже, пропало соединение с сервером! мы уже работаем над проблемой!"
+        "changePassword": [
+            "сменить пароль", "смените свой пароль!", "старый пароль",
+            "введите старый пароль...", "новый пароль", "введите новый пароль..."
+        ]
     }
 ]

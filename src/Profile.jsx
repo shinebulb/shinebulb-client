@@ -80,7 +80,7 @@ function Profile({ settings, bulb }) {
             }</>}
             {authState.username === username &&
             <button className="change-password" onClick={() => navigate("/changepassword")}>
-                {text[settings.language].changePassword}
+                {text[settings.language].changePassword[0]}
             </button>}
             <dialog ref={copyModal} className="copy-modal">
                 <h2>{text[settings.language].pickCopyColors[0]}</h2>
