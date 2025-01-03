@@ -12,6 +12,7 @@ import SavedThemes from './SavedThemes';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 import Profile from './Profile';
+import ChangePassword from './ChangePassword';
 import NoPage from './NoPage';
 import themes from './assets/themes';
 import defaultLang from './assets/defaultLang';
@@ -116,6 +117,7 @@ function App() {
                         <Route path="/login" element={<LogIn bulb={bulb} settings={settings} setSettings={setSettings} setSavedList={setSavedList} />} />
                         <Route path="/signup" element={<SignUp settings={settings} />} />
                         <Route path="/user/:username" element={<Profile settings={settings} bulb={bulb} />} />
+                        <Route path="/changepassword" element={<ChangePassword settings={settings} />} />
                         <Route path="*" element={<NoPage settings={settings} />} />
                     </Routes>
                 </>}

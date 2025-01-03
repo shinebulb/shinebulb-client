@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
 import text from './assets/json/text.json';
 import paths from './assets/json/svg-paths.json';
@@ -10,6 +11,8 @@ import { motion } from 'framer-motion';
 function Profile({ settings, bulb }) {
     
     const navigate = useNavigate();
+
+    const { authState } = useContext(AuthContext);
 
     const [user, setUser] = useState({});
     
@@ -75,7 +78,10 @@ function Profile({ settings, bulb }) {
                     </div>
                 </>
             }</>}
-            <button className="change-password">{text[settings.language].changePassword}</button>
+            {authState.username === username &&
+            <button className="change-password" onClick={() => navigate("/changepassword")}>
+                {text[settings.language].changePassword}
+            </button>}
             <dialog ref={copyModal} className="copy-modal">
                 <h2>{text[settings.language].pickCopyColors[0]}</h2>
                 <hr />
