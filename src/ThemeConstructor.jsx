@@ -40,13 +40,13 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
             if ((event.key == "r") || (event.key == "к")) generateTheme();
         }, true);
         axios.get(
-            `${import.meta.env.VITE_API_KEY}/users/changeTheme`,
+            "https://shinebulb-server-production-7e2b.up.railway.app/users/changeTheme",
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
-            setLocalBg(response.data.lastBg || "#2e5a97");
-            setLocalFont(response.data.lastFont || "#f1f1f1");
-            setBgText(response.data.lastBg || "#2e5a97");
-            setFontText(response.data.lastFont || "#f1f1f1");
+            setLocalBg(response.data.lastBg);
+            setLocalFont(response.data.lastFont);
+            setBgText(response.data.lastBg);
+            setFontText(response.data.lastFont);
         });
     }, []);
 
@@ -75,12 +75,12 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     function applyTheme() {
         setLoadApply(true);
         axios.put(
-            `${import.meta.env.VITE_API_KEY}/users/theme`,
+            "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
             { theme: 3, id: authState.id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
             return axios.put(
-                `${import.meta.env.VITE_API_KEY}/users/lastTheme`,
+                "https://shinebulb-server-production-7e2b.up.railway.app/users/lastTheme",
                 { lastBg: localBg, lastFont: localFont, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             );
@@ -108,7 +108,7 @@ function ThemeConstructor({ constructor, settings, setSettings, width }) {
     function saveTheme() {
         setLoadSave(true);
         axios.post(
-            `${import.meta.env.VITE_API_KEY}/savedthemes`,
+            "https://shinebulb-server-production-7e2b.up.railway.app/savedthemes",
             { bg: localBg, font: localFont },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
