@@ -165,12 +165,6 @@ body {
     margin: auto;
 }
 
-.loggedIn svg {
-    fill: var(--font);
-    height: 250px;
-    margin-bottom: 1rem;
-}
-
 .signup-form, .login-form {
     display: flex;
     flex-direction: column;
@@ -345,7 +339,6 @@ body {
     position: relative;
     align-items: center;
     width: 480px;
-    height: 260px;
     border-radius: 20px;
     padding: 1rem 2rem;
 }
@@ -376,25 +369,6 @@ body {
     font-weight: normal;
     font-style: italic;
     margin: 0 0 3rem 0;
-}
-
-.change-password {
-    font-family: "Roboto Slab";
-    position: absolute;
-    top: calc(50% + 146px);
-    left: 0;
-    right: 0;
-    width: 25rem;
-    height: 3.5rem;
-    border: var(--border-thick);
-    border-radius: 0 0 15px 15px;
-    font-size: 1.3rem;
-    background-color: var(--button-bg);
-    color: var(--button-font);
-    font-weight: bold;
-    margin: auto;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
 }
 
 .copy-modal {
@@ -557,8 +531,7 @@ h2 {
 .signup-form button:hover,
 .login-form button:hover,
 .container select:hover,
-.controls button:hover,
-.change-password:hover {
+.controls button:hover {
     background-color: var(--select-hover);
 }
 
@@ -1151,7 +1124,6 @@ hr {
     .profile {
         flex-direction: column;
         width: 220px;
-        height: 380px;
     }
     .user-info {
         text-align: center;
@@ -1170,14 +1142,6 @@ hr {
         font-weight: normal;
         font-style: italic;
         margin: 0 0 1.8rem 0;
-    }
-    .change-password {
-        top: calc(50% + 206px);
-        width: 13rem;
-        height: 2.8rem;
-        border-radius: 0 0 15px 15px;
-        font-size: 1.1rem;
-        font-weight: normal;
     }
     .copy-modal {
         width: 300px;
