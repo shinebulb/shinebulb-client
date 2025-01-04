@@ -45,8 +45,7 @@
         "error": "error",
         "authNotifications": [
             "unexpected error occurred!",
-            "user was not found!",
-            "wrong password!"
+            "wrong username or password!"
         ],
         "logInWarning": [
             "warning! make sure to carefully check your username and password before logging in. inputting an incorrect combination may cause unexpected errors!",
@@ -64,10 +63,7 @@
         "bulbMuteUnmute": [
             "mute bulb", "unmute bulb"
         ],
-        "changePassword": [
-            "change password", "change your password!", "old password",
-            "enter old password...", "new password", "enter new password..."
-        ]
+        "serverDown": "it looks like our server is down! we're currently addressing the issue!"
     },
 
     {
@@ -116,8 +112,7 @@
         "error": "ошибка",
         "authNotifications": [
             "произошла неожиданная ошибка!",
-            "пользователь не найден!",
-            "неправильный пароль!"
+            "неверное имя пользователя или пароль!"
         ],
         "logInWarning": [
             "предупреждение! внимательно проверьте имя пользователя и пароль перед входом в аккаунт. введение неверной комбинации может привести к неожиданным ошибкам!",
@@ -135,9 +130,6 @@
         "bulbMuteUnmute": [
             "выключить звуки лампочки", "включить звуки лампочки"
         ],
-        "changePassword": [
-            "сменить пароль", "смените свой пароль!", "старый пароль",
-            "введите старый пароль...", "новый пароль", "введите новый пароль..."
-        ]
+        "serverDown": "похоже, пропало соединение с сервером! мы уже работаем над проблемой!"
     }
 ]
