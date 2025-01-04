@@ -42,7 +42,7 @@ function SignUp({ settings }) {
 
     function createUser(data) {
         setLoadSignUp(true);
-        axios.post(`${import.meta.env.VITE_API_KEY}/users`, data)
+        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users", data)
         .then(() => {
             navigate("/login");
             setLoadSignUp(false);
@@ -59,7 +59,6 @@ function SignUp({ settings }) {
         >
             {!authState.status ?
             <>
-                <div style={{height: "3rem"}}/>
                 <h2 style={{width: "80vw"}} >{text[settings.language].signup[0]}</h2>
                 <Formik
                     initialValues={initialValues}
@@ -92,10 +91,7 @@ function SignUp({ settings }) {
                     </Form>
                 </Formik>
             </>
-            : <div className="loggedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d={paths.loggedIn}/></svg>
-                <h2 style={{width: "100%"}}>{text[settings.language].authErrors[5]}</h2>
-            </div>}
+            : <h2>{text[settings.language].authErrors[5]}</h2>}
         </motion.div>
     )
 }
