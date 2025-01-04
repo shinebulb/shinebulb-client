@@ -27,7 +27,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
     function renameTheme() {
         setLoadRename(true);
         axios.put(
-            `${import.meta.env.VITE_API_KEY}/savedthemes/title`,
+            "https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/title",
             { title: inputRef.current.value, id: id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
@@ -42,7 +42,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
     function applyTheme() {
         setLoadApply(true);
         axios.put(
-            `${import.meta.env.VITE_API_KEY}/users/theme`,
+            "https://shinebulb-server-production-7e2b.up.railway.app/users/theme",
             { theme: 3, id: authState.id },
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
@@ -50,7 +50,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
             setSettings({ ...settings, theme: 3 });
 
             return axios.put(
-                `${import.meta.env.VITE_API_KEY}/users/lastTheme`,
+                "https://shinebulb-server-production-7e2b.up.railway.app/users/lastTheme",
                 { lastBg: bg, lastFont: font, id: authState.id },
                 { headers: { accessToken: localStorage.getItem("accessToken") } }
             )
@@ -75,7 +75,7 @@ function ThemeCard({ id, index, bg, font, title, savedList, setSavedList, settin
     function deleteTheme() {
         setLoadDelete(true);
         axios.delete(
-            `${import.meta.env.VITE_API_KEY}/savedthemes/${id}`,
+            `https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/${id}`,
             { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(response => {
             setSavedList(savedList.filter(theme => theme.id !== Number(response.data)));
