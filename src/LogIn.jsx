@@ -39,7 +39,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
     function login() {
         let id = 0;
         setLoadLogIn(true);
-        axios.post(`${import.meta.env.VITE_API_KEY}/users/login`, {
+        axios.post("https://shinebulb-server-production-7e2b.up.railway.app/users/login", {
             username: username,
             password: password
         })
@@ -60,7 +60,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 navigate("/");
                 id = response.data.id;
                 return axios.get(
-                    `${import.meta.env.VITE_API_KEY}/users/settings/${id}`,
+                    `https://shinebulb-server-production-7e2b.up.railway.app/users/settings/${id}`,
                     { headers: { accessToken: response.data.token } }
                 );
             }
@@ -74,7 +74,7 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                 });
                 themes[response.data.theme === null ? settings.theme : response.data.theme]();
                 if ((response.data.bulbStatus === "on") && (bulb.current)) bulb.current.classList.add("on");
-                return axios.get(`${import.meta.env.VITE_API_KEY}/savedthemes/byUser/${response.data.id}`);
+                return axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/savedthemes/byUser/${response.data.id}`);
             }
             else {
                 themes[parseInt(localStorage.getItem("theme")) || 0]();
@@ -98,9 +98,8 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
-            {!authState.status ?
+            <div style={{height: "3rem"}}/>{!authState.status ?
             <>
-                <div style={{height: "3rem"}}/>
                 <h2 style={{width: "80vw"}}>{text[settings.language].login[0]}</h2>
                 <div className="login-warning" style={{display: warningDisplay}}>
                     <p>{text[settings.language].logInWarning[0]}</p>
@@ -150,10 +149,9 @@ function LogIn({ bulb, settings, setSettings, setSavedList }) {
                     </div>
                 </dialog>
             </>
-            : <div className="loggedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d={paths.loggedIn}/></svg>
-                <h2 style={{width: "100%"}}>{text[settings.language].authErrors[4]}</h2>
-            </div>}
+            : <>
+                <h2>{text[settings.language].authErrors[4]}</h2>
+            </>}
         </motion.div>
     )
 }
