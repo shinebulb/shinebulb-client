@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { AuthContext } from './assets/AuthContext';
 import axios from 'axios';
 import text from './assets/json/text.json';
 import paths from './assets/json/svg-paths.json';
@@ -11,8 +10,6 @@ import { motion } from 'framer-motion';
 function Profile({ settings, bulb }) {
     
     const navigate = useNavigate();
-
-    const { authState } = useContext(AuthContext);
 
     const [user, setUser] = useState({});
     
@@ -28,7 +25,7 @@ function Profile({ settings, bulb }) {
     useEffect(() => {
         setLoadUser(true);
         document.title = username;
-        axios.get(`${import.meta.env.VITE_API_KEY}/users/userinfo/${username}`)
+        axios.get(`https://shinebulb-server-production-7e2b.up.railway.app/users/userinfo/${username}`)
         .then(response => {
             setUser(response.data);
             setLoadUser(false);
@@ -78,10 +75,6 @@ function Profile({ settings, bulb }) {
                     </div>
                 </>
             }</>}
-            {authState.username === username &&
-            <button className="change-password" onClick={() => navigate("/changepassword")}>
-                {text[settings.language].changePassword[0]}
-            </button>}
             <dialog ref={copyModal} className="copy-modal">
                 <h2>{text[settings.language].pickCopyColors[0]}</h2>
                 <hr />
